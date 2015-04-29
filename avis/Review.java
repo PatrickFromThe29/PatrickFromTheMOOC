@@ -3,9 +3,9 @@ package avis;
 
 public class Review {
 
-	/**
-	 * @uml.property  name="member"
-	 * @uml.associationEnd  multiplicity="(1 1)" inverse="review:avis.Member"
+	/** 
+	 * @uml.property name="member"
+	 * @uml.associationEnd multiplicity="(1 1)" inverse="reviews:avis.Member"
 	 */
 	private Member member = null;
 
