@@ -15,6 +15,8 @@ import exception.NotMember;
  * @author A. Beugnard, 
  * @author G. Ouvradou
  * @author B. Prou
+ * @author Y. Andreu
+ * @author Y. Omnès
  * @date février - mars 2011
  * @version V0.6
  */
@@ -351,7 +353,21 @@ public class SocialNetwork {
 	 * @return la note moyenne des notes sur ce livre
 	 */
 	public float reviewItemBook(String pseudo, String password, String titre, float note, String commentaire) throws BadEntry, NotMember, NotItem {
-		return 0.0f;
+		for (Member member : members) // On parcourt la liste des membres
+		{
+			if (member.authentificationMatches(pseudo, password)) // Vérification de l'identité, lève les BadEntry sur pseudo et password
+			{
+				for (Item i : items)// On parcourt la liste des items
+					if (i instanceof Book) // On ne travaille que sur les Book
+						if (((Book)i).titleIs(titre)) // Vérification du titre, lève les BadEntry sur le titre
+						{
+							i.addOrModifyReview(member, note, commentaire); // Crée/modifie la review, la rattache au Member concerné et lève BadEntry si besoin
+							return i.moyenneNoteReview();
+						}
+				throw new NotItem("Le titre saisi n'est pas celui d'un livre connu. Ajoutez un nouveau livre au réseau social pour pouvoir l'évaluer.");
+			}
+		}
+		throw new NotMember("Les informations fournies n'ont pas permis de vous authentifier");
 	}
 
 
