@@ -44,15 +44,15 @@ import exception.NotMember;
  */
 
 public class SocialNetwork {
-	/**
-	 * @uml.property  name="members"
-	 * @uml.associationEnd  multiplicity="(0 -1)" ordering="true" inverse="socialNetwork:avis.Member"
+	/** 
+	 * @uml.property name="members"
+	 * @uml.associationEnd multiplicity="(0 -1)" ordering="true" inverse="socialNetwork:avis.Member"
 	 */
 	private LinkedList<Member> members;
 	
-	/**
-	 * @uml.property  name="items"
-	 * @uml.associationEnd  multiplicity="(0 -1)" ordering="true" inverse="socialNetwork:avis.Item"
+	/** 
+	 * @uml.property name="items"
+	 * @uml.associationEnd multiplicity="(0 -1)" ordering="true" inverse="socialNetwork:avis.Item"
 	 */
 	private LinkedList<Item> items;
 	
@@ -302,6 +302,7 @@ public class SocialNetwork {
 	 * @return la note moyenne des notes sur ce film  
 	 */
 	public float reviewItemFilm(String pseudo, String password, String titre, float note, String commentaire) throws BadEntry, NotMember, NotItem {
+		
 		return 0.0f;
 	}
 
@@ -343,50 +344,6 @@ public class SocialNetwork {
 	 */
 	public String toString() {
 		return "";
-	}
-
-
-
-
-
-	/**
-	 * Getter of the property <tt>members</tt>
-	 * @return  Returns the members.
-	 * @uml.property  name="members"
-	 */
-	public LinkedList getMembers() {
-		return members;
-	}
-
-	/**
-	 * Setter of the property <tt>members</tt>
-	 * @param members  The members to set.
-	 * @uml.property  name="members"
-	 */
-	public void setMembers(LinkedList members) {
-		this.members = members;
-	}
-
-
-
-
-
-	/**
-	 * Getter of the property <tt>items</tt>
-	 * @return  Returns the items.
-	 * @uml.property  name="items"
-	 */
-	public LinkedList getItems() {
-		return items;
-	}
-
-	/**
-	 * Setter of the property <tt>items</tt>
-	 * @param items  The items to set.
-	 * @uml.property  name="items"
-	 */
-	public void setItems(LinkedList items) {
-		this.items = items;
 	}
 
 
