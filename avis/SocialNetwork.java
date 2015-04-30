@@ -1,6 +1,6 @@
 package avis;
 
-import java.util.ArrayList;
+
 import java.util.LinkedList;
 
 
@@ -44,14 +44,26 @@ import exception.NotMember;
  */
 
 public class SocialNetwork {
-
+	/**
+	 * @uml.property  name="members"
+	 * @uml.associationEnd  multiplicity="(0 -1)" ordering="true" inverse="socialNetwork:avis.Member"
+	 */
+	private LinkedList<Member> members;
+	
+	/**
+	 * @uml.property  name="items"
+	 * @uml.associationEnd  multiplicity="(0 -1)" ordering="true" inverse="socialNetwork:avis.Item"
+	 */
+	private LinkedList<Item> items;
+	
 
 	/**
 	 * constructeur de <i>SocialNetwok</i> 
 	 * 
 	 */
-
 	public SocialNetwork() {
+		members = new LinkedList<Member>();
+		items = new LinkedList<Item>();
 	}
 
 	/**
@@ -60,7 +72,7 @@ public class SocialNetwork {
 	 * @return le nombre de membres
 	 */
 	public int nbMembers() {
-		return 0;
+		return members.size();
 	}
 
 	/**
@@ -69,7 +81,11 @@ public class SocialNetwork {
 	 * @return le nombre de films
 	 */
 	public int nbFilms() {
-		return 0;
+		int nbFilms=0;
+		for(Item i : items)
+			if (i instanceof Film)
+				nbFilms++;
+		return nbFilms;
 	}
 
 	/**
@@ -78,7 +94,11 @@ public class SocialNetwork {
 	 * @return le nombre de livres
 	 */
 	public int nbBooks() {
-		return 0;
+		int nbBooks=0;
+		for (Item i : items)
+			if (i instanceof Book)
+				nbBooks++;
+		return nbBooks;
 	}
 
 
@@ -100,7 +120,21 @@ public class SocialNetwork {
 	 * 
 	 */
 	public void addMember(String pseudo, String password, String profil) throws BadEntry, MemberAlreadyExists  {
-
+		//===================================== TENTATIVE AJOUT MEMBRE =======================================
+		// On tente d'ajouter le membre. Le contructeur de Member lève les BadEntry si besoin
+		Member membre = new Member(pseudo,password,profil);
+			
+		// Si on arrive là, c'est que les paramètres étaient corrects sur la forme.
+		// On parcourt la liste de membres.
+		// Si le pseudo correspond déjà à un membre, on refuse l'inscription
+		for(Member m:members)
+			if (m.hasPseudo(pseudo))
+				throw new MemberAlreadyExists();
+		
+		// ====================================== AJOUT D'UN MEMBRE ===============================================
+		// Si on arrive ici, c'est que les informations saisies ont été considérées comme acceptables
+		// On entre le pseudo en majuscules et sans ses trailing et leading blanks.
+		members.add(membre);
 	}
 
 
@@ -130,6 +164,48 @@ public class SocialNetwork {
 	 * 
 	 */
 	public void addItemFilm(String pseudo, String password, String titre, String genre, String realisateur, String scenariste, int duree) throws BadEntry, NotMember, ItemFilmAlreadyExists {
+		boolean allowed = false;
+		//===================================== ANALYSE DES CAS D'ERREURS =======================================
+		// On tente l'ajout d'un film. Le constructeur de Film peut lever BadEntry si nécessaire
+		Film film = new Film(titre, genre, realisateur, scenariste, duree);
+		
+		
+		// Si le pseudo, le password n'est (ne sont) pas instancié(s)
+		if (pseudo==null || password==null)
+			throw new BadEntry("Le pseudo, le password, le réalisateur, le titre, le genre, le réalisateur et le scénariste doivent être instanciés.");
+		
+		//Si le pseudo a moins d'un caractère autre que des espaces
+		if (pseudo.replaceAll(" ","").length()<1)
+			throw new BadEntry ("Le pseudo doit comporter au moins un caractère autre que des espaces.");
+		
+		// Si le password possède moins de 4 caractères autres que des leading or trailing blanks
+		if (password.trim().length()<4)
+			throw new BadEntry ("Le password doit comporter au moins 4 caractères autres que des espaces de début ou fin.");
+		
+		// Si le membre n'existe pas ou si le password est incorrect
+		for (Member m: members)
+			if(m.getPseudo().trim().equals(pseudo.trim()))
+			{
+				if (m.passwordMatches(password))
+					allowed = true;
+				else
+					break; //Inutile de continuer si on a déjà trouvé le membre mais que son password est faux
+			}
+		if (!allowed)
+			throw new NotMember("Les informations fournies n'ont pas permis de vous authentifier. Vérifiez votre pseudo et votre password.");
+		
+		// Si le film existe déjà
+		for (Item i : items)
+			if (i instanceof Film) // On recherche uniquement parmi les films
+			{
+				if(((Film)i).getTitre().trim().toUpperCase().equals(titre.trim().toUpperCase()))
+					throw new ItemFilmAlreadyExists();
+			}
+		
+		// ====================================== AJOUT D'UN FILM ===============================================	
+		// Si on arrive à cette instruction, c'est que toutes les validations ont été effectuées avec succès.
+		items.add(film);
+
 
 	}
 
@@ -247,11 +323,7 @@ public class SocialNetwork {
 	}
 
 
-	/**
-	 * @uml.property  name="members"
-	 * @uml.associationEnd  multiplicity="(0 -1)" ordering="true" inverse="socialNetwork:avis.Member"
-	 */
-	private LinkedList members;
+
 
 
 	/**
@@ -273,11 +345,7 @@ public class SocialNetwork {
 	}
 
 
-	/**
-	 * @uml.property  name="items"
-	 * @uml.associationEnd  multiplicity="(0 -1)" ordering="true" inverse="socialNetwork:avis.Item"
-	 */
-	private LinkedList items;
+
 
 
 	/**

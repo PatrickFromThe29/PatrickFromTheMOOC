@@ -45,4 +45,12 @@ public class Review {
 					public void modifyReview(float note, String commentaire){
 					}
 
+
+						
+						/**
+						 */
+						public boolean membreIs(Member membre){
+							return false;	
+						}
+
 }
