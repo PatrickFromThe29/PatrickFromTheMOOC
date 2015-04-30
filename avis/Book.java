@@ -42,10 +42,16 @@ public class Book extends Item {
 				
 		//===================================== CONSTRUCTION =======================================
 		
-		this.titre = titre;
+		this.titre = titre.trim();
 		this.genre = genre;
 		this.auteur = auteur;
 		this.nbPages = nbPages;
+	}
+	
+	/**
+	 */
+	public boolean titleIs(String titre){
+		return (this.titre.toUpperCase().equals(titre.trim().toUpperCase()));	
 	}
 	
 	/**
@@ -70,11 +76,5 @@ public class Book extends Item {
 		Book b = (Book)o;
 		return (b.titre.equals(this.titre) && b.genre.equals(this.genre) && b.auteur.equals(this.auteur) && b.nbPages==this.nbPages);
 	}
-
-				
-
-				
-	
-
 
 }

@@ -164,49 +164,28 @@ public class SocialNetwork {
 	 * 
 	 */
 	public void addItemFilm(String pseudo, String password, String titre, String genre, String realisateur, String scenariste, int duree) throws BadEntry, NotMember, ItemFilmAlreadyExists {
-		boolean allowed = false;
 		//===================================== ANALYSE DES CAS D'ERREURS =======================================
 		// On tente l'ajout d'un film. Le constructeur de Film peut lever BadEntry si nécessaire
 		Film film = new Film(titre, genre, realisateur, scenariste, duree);
-		
-		
-		// Si le pseudo, le password n'est (ne sont) pas instancié(s)
-		if (pseudo==null || password==null)
-			throw new BadEntry("Le pseudo, le password, le réalisateur, le titre, le genre, le réalisateur et le scénariste doivent être instanciés.");
-		
-		//Si le pseudo a moins d'un caractère autre que des espaces
-		if (pseudo.replaceAll(" ","").length()<1)
-			throw new BadEntry ("Le pseudo doit comporter au moins un caractère autre que des espaces.");
-		
-		// Si le password possède moins de 4 caractères autres que des leading or trailing blanks
-		if (password.trim().length()<4)
-			throw new BadEntry ("Le password doit comporter au moins 4 caractères autres que des espaces de début ou fin.");
-		
-		// Si le membre n'existe pas ou si le password est incorrect
+
+		// On recherche le membre
 		for (Member m: members)
-			if(m.getPseudo().trim().equals(pseudo.trim()))
+			if(m.authentificationMatches(pseudo, password)) // Si les infos de connexion sont reconnues
 			{
-				if (m.passwordMatches(password))
-					allowed = true;
-				else
-					break; //Inutile de continuer si on a déjà trouvé le membre mais que son password est faux
+				// Si le film existe déjà
+				for (Item i : items)
+					if (i instanceof Film) // On recherche uniquement parmi les films
+					{
+						if(((Film)i).titleIs(titre))
+							throw new ItemFilmAlreadyExists();
+					}
+				
+				// ====================================== AJOUT D'UN FILM ===============================================	
+				// Si on arrive à cette instruction, c'est que toutes les validations ont été effectuées avec succès.
+				items.add(film);
+				return; 
 			}
-		if (!allowed)
-			throw new NotMember("Les informations fournies n'ont pas permis de vous authentifier. Vérifiez votre pseudo et votre password.");
-		
-		// Si le film existe déjà
-		for (Item i : items)
-			if (i instanceof Film) // On recherche uniquement parmi les films
-			{
-				if(((Film)i).getTitre().trim().toUpperCase().equals(titre.trim().toUpperCase()))
-					throw new ItemFilmAlreadyExists();
-			}
-		
-		// ====================================== AJOUT D'UN FILM ===============================================	
-		// Si on arrive à cette instruction, c'est que toutes les validations ont été effectuées avec succès.
-		items.add(film);
-
-
+		throw new NotMember("Les informations fournies n'ont pas permis de vous authentifier.");
 	}
 
 	/**

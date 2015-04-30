@@ -55,21 +55,40 @@ public class Member{
 		
 	/**
 	 */
-	public boolean hasPseudo(String pseudo){
-		// On fait trim et toUpperCase pour s'affranchir de la casse et des leading/trailing blanks
-		if(this.pseudo.trim().toUpperCase().equals(pseudo.trim().toUpperCase()))
-			return true;
-		else
-			return false;	
+	public boolean hasPseudo(String pseudo) throws BadEntry{
+		// Si le pseudo n'est pas instancié
+		if (pseudo==null)
+			throw new BadEntry("Le pseudo doit être instancié.");
+		
+		//Si le pseudo a moins d'un caractère autre que des espaces
+		if (pseudo.replaceAll(" ","").length()<1)
+			throw new BadEntry ("Le pseudo doit comporter au moins un caractère autre que des espaces.");
+		
+		// Si on arrive ici, c'est que le pseudo est correct sur la forme
+		// On fait toUpperCase pour s'affranchir de la casse et trim pour les leading/trailing blanks (trim est fait dans le constructeur pour  this.pseudo)
+		return (this.pseudo.toUpperCase().equals(pseudo.trim().toUpperCase()));	
 	}
 	
 	/**
 	 */
-	public boolean passwordIs(String password){
-		if(this.password.trim().equals(password.trim()))
-			return true;
-		else 
-			return false;
+	public boolean passwordIs(String password) throws BadEntry{
+		// Si le password n'est pas instancié
+		if (password==null)
+			throw new BadEntry("Le password doit être instancié.");
+		// Si le password possède moins de 4 caractères autres que des leading or trailing blanks
+		if (password.trim().length()<4)
+			throw new BadEntry ("Le password doit comporter au moins 4 caractères autres que des espaces de début ou fin.");
+		
+		// Si on arrive ici, c'est que le password est correct sur la forme
+		// Pas de toUpperCase : on tient compte de la casse dans le password
+		// trim pour supprimer les leading et trailing blanks (déjà fait pour this.password à la construction)
+		return (this.password.equals(password.trim()));
+	}
+	
+	/**
+	 */
+	public boolean authentificationMatches(String pseudo, String password) throws BadEntry{
+		return (this.hasPseudo(pseudo) && this.passwordIs(password));
 	}
 
 	

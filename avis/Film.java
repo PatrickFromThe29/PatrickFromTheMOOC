@@ -45,13 +45,18 @@ public class Film extends Item {
 		
 		//===================================== CONSTRUCTION =======================================
 		
-		this.titre = titre;
+		this.titre = titre.trim();
 		this.genre = genre;
 		this.scenariste = scenariste;
 		this.realisateur = realisateur;
 		this.duree = duree;
 	}	
 	
+	/**
+	 */
+	public boolean titleIs(String titre){
+		return (this.titre.toUpperCase().equals(titre.trim().toUpperCase()));	
+	}
 	
 	/**
 	 */
