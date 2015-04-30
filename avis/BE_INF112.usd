@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<editmodel:SequenceDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="BE_INF112" size="1210,654" metadata="uml2-1.0" initialized="true" tag="1000" key="32303037303533312D313030302050726F6A65745F494E463131322F696E66">
+<editmodel:SequenceDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="BE_INF112" size="1300,654" metadata="uml2-1.0" initialized="true" tag="1000" key="32303037303533312D313030302050726F6A65745F494E463131322F696E66">
   <children xsi:type="editmodel:ActorEditModel" location="60,20" size="100,614" itemName="Membre">
     <children xsi:type="editmodel:ActivationEditModel" targetConnections="//@children.3/@children.0/@sourceConnections.1" location="42,113" size="16,234" sequenceItemContainer="//@children.0" length="234">
       <sourceConnections xsi:type="editmodel:SequenceMessageEditModel" name="reviewItemBook" id="avis/SocialNetwork#reviewItemBook(Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;FLjava.lang.String;)" source="//@children.0/@children.0" target="//@children.3/@children.0" targetEnd="//@children.0/@children.0/@sourceConnections.0/@children.1" sourceEnd="//@children.0/@children.0/@sourceConnections.0/@children.0" connectionRouterKind="Manual" associatedMethod="reviewItemBook(String,String,String,float,String): float" associatedSequenceNumber="1" associatedReturnArrow="//@children.3/@children.0/@sourceConnections.1" shouldShowReturnArrow="true">
@@ -34,7 +34,7 @@
       </sourceConnections>
     </children>
   </children>
-  <children xsi:type="editmodel:InstanceEditModel" name="Book" location="690,20" size="100,614" id="avis/Book" itemName="livre">
+  <children xsi:type="editmodel:InstanceEditModel" name="Book" location="915,20" size="100,614" id="avis/Book" itemName="livre">
     <children xsi:type="editmodel:ActivationEditModel" targetConnections="//@children.3/@children.0/@sourceConnections.0" location="42,182" size="16,117" sequenceItemContainer="//@children.1" length="117">
       <sourceConnections xsi:type="editmodel:ReturnArrowEditModel" source="//@children.1/@children.0" target="//@children.3/@children.0" targetEnd="//@children.1/@children.0/@sourceConnections.0/@children.1" sourceEnd="//@children.1/@children.0/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
         <children xsi:type="editmodel:SequenceEndEditModel" location="0,117" anchorKind="FixedAtEdge" attachSource="true" userLabel="//@children.1/@children.0/@sourceConnections.0/@children.0/@children.0" methodLabel="//@children.1/@children.0/@sourceConnections.0/@children.0/@children.1" sequenceNumberLabel="//@children.1/@children.0/@sourceConnections.0/@children.0/@children.2" statementExpression="//@children.1/@children.0/@sourceConnections.0/@children.0/@children.3">
@@ -96,7 +96,7 @@
       </sourceConnections>
     </children>
   </children>
-  <children xsi:type="editmodel:InstanceEditModel" targetConnections="//@children.1/@children.0/@sourceConnections.1" name="Review" location="1065,199" size="125,435" id="avis/Review" itemName="review" creatingActivation="//@children.2/@children.0" creation="true">
+  <children xsi:type="editmodel:InstanceEditModel" targetConnections="//@children.1/@children.0/@sourceConnections.1" name="Review" location="1155,199" size="125,435" id="avis/Review" itemName="review" creatingActivation="//@children.2/@children.0" creation="true">
     <children xsi:type="editmodel:ActivationEditModel" location="54,80" size="16,40" sequenceItemContainer="//@children.2"/>
     <children xsi:type="editmodel:ActivationEditModel" targetConnections="//@children.1/@children.1/@sourceConnections.0" location="54,258" size="16,40" sequenceItemContainer="//@children.2">
       <sourceConnections xsi:type="editmodel:ReturnArrowEditModel" source="//@children.2/@children.1" target="//@children.1/@children.1" targetEnd="//@children.2/@children.1/@sourceConnections.0/@children.1" sourceEnd="//@children.2/@children.1/@sourceConnections.0/@children.0" connectionRouterKind="Manual">
@@ -177,6 +177,7 @@
       </sourceConnections>
     </children>
   </children>
+  <children xsi:type="editmodel:NotepadEditModel" location="518,97" size="379,50" fontInfo="Sans-8-0" note="En cas de pseudo, password, titre ou commentaire non instancié, levé de BadEntry&#xA;En cas de note non comprise entre 0 et 5, levée de BadEntry&#xA;Si le pseudo et le password ne correspondent pas ou si le pseudo est incorrecte, levé de NotItem&#xA;Si le titre ne correspond pas à un livre enregistré, levé de NotItem"/>
   <diagramOptions xsi:type="options:SequenceDiagramOptions" level="0" autoName="false"/>
   <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
     <leftRuler/>
