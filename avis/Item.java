@@ -2,6 +2,8 @@ package avis;
 
 import java.util.LinkedList;
 
+import exception.BadEntry;
+
 
 public abstract class Item {
 
@@ -20,26 +22,35 @@ public abstract class Item {
 	
 	
 	/**
+	 * @throws BadEntry 
 	 */
-	public void addOrModifyReview(Member member, float note, String commentaire){
+	public void addOrModifyReview(Member member, float note, String commentaire) throws BadEntry{
+		Review review = new Review(member, note, commentaire); // Lève les BadEntry sur commentaire et note.
+		
 		/* Si le Member a déjà déposé un avis, on va le modifier. Pour cela, il faut parcourir 
 		 * les reviews de l'item jusqu'à trouver la review déposée par le Member membre.
 		 */
-		for (int i=0; i<reviews.size();i++)
-			if (reviews.get(i).membreIs(member)){
-				reviews.get(i).modifyReview(note, commentaire);
+		for (Review r : reviews)
+			if (r.membreIs(member)){
+				r.modify(note, commentaire);
 				return;
 			}
-		
-		// S'il s'avère que le membre n'a pas déposé d'avis, il faut en créer un nouveau
-		this.reviews.add(new Review(member, note, commentaire));
+
+		// Si le membre n'a pas encore déposé d'avis sur le film, on ajoute le nouvel avis à la liste attachée au film
+		this.reviews.add(review);
+		// Dans le même temps, on ajoute la même review à la liste de reviews attachée au Member concerné. 
+		member.addReview(review);
 	}
 		
 	
 	/**
 	 */
 	public float moyenneNoteReview(){
-		return 0;
+		float somme = 0;
+		for (Review review : reviews)
+			somme+=review.getNote();
+		
+		return (somme/(float)(reviews.size()));
 	}
 
 			

@@ -90,6 +90,14 @@ public class Member{
 	public boolean authentificationMatches(String pseudo, String password) throws BadEntry{
 		return (this.hasPseudo(pseudo) && this.passwordIs(password));
 	}
+	
+	
+	/**
+	 */
+	public void addReview(Review review){
+		if (review!=null)
+			reviews.add(review);
+	}
 
 	
 	/**
@@ -107,5 +115,4 @@ public class Member{
 		else
 			return false;	
 	 }
-
 }

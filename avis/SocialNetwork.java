@@ -303,7 +303,25 @@ public class SocialNetwork {
 	 */
 	public float reviewItemFilm(String pseudo, String password, String titre, float note, String commentaire) throws BadEntry, NotMember, NotItem {
 		
-		return 0.0f;
+		for (Member member : members) // On parcourt la liste des membres
+		{
+			if (member.authentificationMatches(pseudo, password)) // Vérification de l'identité, lève les BadEntry sur pseudo et password
+			{
+				for (Item i : items)// On parcourt la liste des items
+					if (i instanceof Film) // On ne travaille que sur les Film
+						if (((Film)i).titleIs(titre)) // Vérification du titre, lève les BadEntry sur le titre
+						{
+							i.addOrModifyReview(member, note, commentaire); // Crée/modifie la review, la rattache au Member concerné et lève BadEntry si besoin
+							return i.moyenneNoteReview();
+						}
+				throw new NotItem("Le titre saisi n'est pas celui d'un film connu. Ajoutez un nouveau film au réseau social pour pouvoir l'évaluer.");
+			}
+		}
+		throw new NotMember("Les informations fournies n'ont pas permis de vous authentifier");
+		// Pas besoin de return en fin de méthode : l'exception NotMember est forcément levée si on sort du foreach principal
+		// NotItem est levée si on a trouvé le membre mais que le film n'existe pas.
+		// Si le membre est trouvé, que le film existe et que des paramètres sont incorrects, BadEntry sera levée par une des méthodes appelées et remontée à celle-ci
+		// Si le membre est trouvé, que le film existe et que tous les paramètres sont corrects, on arrivera au return prévu et la méthode se terminera correctement en renvoyant la moyenne des notes des reviews sur le film concerné 
 	}
 
 
@@ -345,9 +363,4 @@ public class SocialNetwork {
 	public String toString() {
 		return "";
 	}
-
-
-
-
-
 }

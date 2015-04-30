@@ -58,7 +58,7 @@ public class TestReviewItemFilm {
 				return 0;
 			else {
 				
-				System.out.println("Moyenne incorrecte (différence entre moyenne attendue et moyenne réelle");
+				System.out.println("Moyenne incorrecte (différence entre moyenne attendue et moyenne réelle).");
 				return 1;
 			}
 			}
