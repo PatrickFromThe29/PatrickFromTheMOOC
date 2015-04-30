@@ -103,8 +103,7 @@ public class Member{
 	/**
 	 */
 	public String toString(){
-		String s = this.pseudo + " : " + this.profil+"\n";
-		return s;	
+		return this.pseudo + " ("+ profil + ")\n";	
 	}
 		
 	public boolean equals(Object o){

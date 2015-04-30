@@ -59,7 +59,7 @@ public abstract class Item {
 	
 	public String toString(){
 		String s="";
-		s+= "Avis : \n";
+		s+= "Avis (moyenne : "+ moyenneNoteReview() +"/5) : \n";
 		if (!reviews.isEmpty())
 			for(Review avis:reviews) // Ajoute tous les avis déposés sur ce Film
 				s+= avis + "\n";
