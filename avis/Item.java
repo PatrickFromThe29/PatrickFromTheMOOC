@@ -11,6 +11,14 @@ public abstract class Item {
 	 */
 	private LinkedList<Review> reviews;
 
+	
+	/**
+	 */
+	public Item(){
+		reviews = new LinkedList<Review>();
+	}
+	
+	
 	/**
 	 */
 	public void addOrModifyReview(Member member, float note, String commentaire){
@@ -44,12 +52,13 @@ public abstract class Item {
 		if (!reviews.isEmpty())
 			for(Review avis:reviews) // Ajoute tous les avis déposés sur ce Film
 				s+= avis + "\n";
+		else
+			s+= "Aucun \n";
 		return s;
 	}
 
 					
 	/**
 	 */
-	public abstract boolean equals(Object o);
-					
+	public abstract boolean equals(Object o);			
 }

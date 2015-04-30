@@ -213,7 +213,28 @@ public class SocialNetwork {
 	 * 
 	 */
 	public void addItemBook(String pseudo, String password, String titre, String genre, String auteur, int nbPages) throws  BadEntry, NotMember, ItemBookAlreadyExists{
+		//===================================== ANALYSE DES CAS D'ERREURS =======================================
+		// On tente l'ajout d'un livre. Le constructeur de Book peut lever BadEntry si nécessaire
+		Book book = new Book(titre, genre, auteur, nbPages);
 
+		// On recherche le membre
+		for (Member m: members)
+			if(m.authentificationMatches(pseudo, password)) // Si les infos de connexion sont reconnues
+			{
+				// Si le livre existe déjà
+				for (Item i : items)
+					if (i instanceof Book) // On recherche uniquement parmi les livres
+					{
+						if(((Book)i).titleIs(titre))
+							throw new ItemBookAlreadyExists();
+					}
+				
+				// ====================================== AJOUT D'UN LIVRE ===============================================	
+				// Si on arrive à cette instruction, c'est que toutes les validations ont été effectuées avec succès.
+				items.add(book);
+				return; 
+			}
+		throw new NotMember("Les informations fournies n'ont pas permis de vous authentifier.");
 	}
 
 	/**
@@ -228,7 +249,30 @@ public class SocialNetwork {
 	 * (une liste vide si aucun item ne correspond) 
 	 */
 	public LinkedList <String> consultItems(String nom) throws BadEntry {
-		return new LinkedList <String> ();
+		LinkedList<String> result = new LinkedList<String>();
+		Film film = null;
+		Book book = null;
+		
+		//===================================== RECHERCHE DANS LES ITEMS ========================================
+		// On regarde le nom de chaque item. S'il correspond à la recherche, on le rajoute à la liste de chaines result
+		// Les cas de levée de BadEntry sont gérés par la méthode titleIs de chaque classe Item.
+		
+		for (Item item : items)
+		{
+			if ( item instanceof Film)
+			{
+				film = (Film)item;
+				if (film.titleIs(nom))
+					result.add(film.toString());
+			}
+			else if (item instanceof Book)
+			{
+				book = (Book)item;
+				if (book.titleIs(nom))
+					result.add(book.toString());
+			}
+		}
+		return result;
 	}
 
 

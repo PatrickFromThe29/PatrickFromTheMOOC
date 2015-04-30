@@ -31,9 +31,9 @@ public class Film extends Item {
 	public Film(String titre, String genre, String realisateur, String scenariste, int duree) throws BadEntry{
 		super();
 		//=============================== ANALYSE DES CAS D'ERREURS ================================
-		// Si le pseudo, le password, le titre, le genre, le réalisateur ou le scénariste n'est (ne sont) pas instancié(s)
+		// Si le titre, le genre, le réalisateur ou le scénariste n'est (ne sont) pas instancié(s)
 		if (titre==null || genre==null || realisateur==null || scenariste==null)
-			throw new BadEntry("Le pseudo, le password, le réalisateur, le titre, le genre, le réalisateur et le scénariste doivent être instanciés.");
+			throw new BadEntry("Le titre, le genre, le réalisateur et le scénariste doivent être instanciés.");
 
 		//Si le titre a moins de 1 caractère autre que des espaces
 		if (titre.replaceAll(" ","").length()<1)
@@ -54,7 +54,13 @@ public class Film extends Item {
 	
 	/**
 	 */
-	public boolean titleIs(String titre){
+	public boolean titleIs(String titre) throws BadEntry{
+		//=============================== ANALYSE DES CAS D'ERREURS ================================
+		// Si le titre du Film envoyé est null ou comporte moins de 1 caractère qui n'est pas un espace, BadEntry est levée.
+		if (titre==null || titre.replaceAll(" ", "").length()<1)
+			throw new BadEntry("Le nom du film à rechercher doit être instancié et comporter au moins un caractère différent d'un espace)");
+		
+		//===================================== COMPARAISON ========================================
 		return (this.titre.toUpperCase().equals(titre.trim().toUpperCase()));	
 	}
 	
@@ -67,7 +73,6 @@ public class Film extends Item {
 		s+= "Scénariste : " + this.scenariste + "\n";
 		s+= "Durée : "+ this.duree+ "\n";
 		//s+= "Note moyenne : " + this.moyenneNotesReview() + "/5 \n";
-		s+= "Avis : \n";
 		s+= super.toString();
 		return s;	
 	}
