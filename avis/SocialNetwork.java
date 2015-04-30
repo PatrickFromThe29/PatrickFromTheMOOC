@@ -377,6 +377,31 @@ public class SocialNetwork {
 	 * @return la chaîne de caractères représentation textuelle du <i>SocialNetwork</i> 
 	 */
 	public String toString() {
-		return "";
+		
+		String s = "Le SocialNetwork est composé des éléments suivants:\n";
+		
+		s+= "\nMEMBRES (" + nbMembers() + ") : \n";
+		if (!members.isEmpty())
+			for(Member m:members)
+				s+=m;
+		else
+			s+= "Aucun membre.\n";
+			
+		if(!items.isEmpty()) {
+			s+="\nLIVRES (" + nbBooks() + ") : \n";
+			for(Item i: items)
+				if (i instanceof Book)
+					s+= (Book)i;
+			
+			s+= "\nFILMS (" + nbFilms() + ") : \n";
+			for(Item i : items)
+				if (i instanceof Film)
+					s+= (Film)i;
+		}
+		else
+			s+= "\n AUCUN ITEM.\n";
+		
+		return s;
+
 	}
 }
