@@ -127,10 +127,14 @@ public class TestAddItemFilm {
 
 		//================================= Déclarations =======================================
 		
+		SocialNetwork sn = new SocialNetwork();
+		
 		int nbTests = 0;
 		int nbErreurs = 0;
+		int nbBooks = sn.nbBooks();
+		int nbMembers = sn.nbMembers();
 
-		SocialNetwork sn = new SocialNetwork();
+		
 		
 
 		int nbFilms = sn.nbFilms() ;
@@ -148,7 +152,7 @@ public class TestAddItemFilm {
 			System.exit(1);
 
 		} 
-
+		nbMembers++;
 		//===================================== Tests ==========================================
 
 		// <=> fiche numéro 3
@@ -234,6 +238,18 @@ public class TestAddItemFilm {
 		{
 			nbErreurs++;
 			System.out.println("Le nombre de films a changé après la tentative d'ajout de film déjà existant");
+		}
+		
+		nbTests++;
+		if (nbBooks != sn.nbBooks()){
+			nbErreurs++;
+			System.out.println("Le nombre de livres a changé lors de l'ajout des films");
+		}
+		
+		nbTests++;
+		if (nbMembers != sn.nbMembers()){
+			nbErreurs++;
+			System.out.println("Le nombre de membres a changé lors de l'ajout des films");
 		}
 
 		// Ce n'est pas du test, mais cela peut "rassurer"...

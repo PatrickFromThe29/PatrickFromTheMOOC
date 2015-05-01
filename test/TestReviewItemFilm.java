@@ -113,6 +113,10 @@ public class TestReviewItemFilm {
 		int nbTests = 0;
 		int nbErreurs = 0;
 		
+		int nbBooks = sn.nbBooks();
+		int nbMembers = sn.nbMembers();
+		int nbFilms = sn.nbFilms();
+		
 		System.out.println("Tests d'ajout de reviews Ã  des films.");
 
 		// Ajout d'un membre puis d'un film avec paramÃ¨tres corrects
@@ -177,9 +181,23 @@ public class TestReviewItemFilm {
 		nbTests++;
 		nbErreurs += addReviewNotItem(sn, "Membre 1", "password", "La gransdfde vadrouille",2.5f, "", "6.5", "Ajout d'une review acceptÃ© avec un titre incorrect.");
 
+		nbTests++;
+		if (nbFilms != sn.nbFilms()){
+			nbErreurs++;
+			System.out.println("Le nombre de film a changé lors de l'ajout des review");
+		}
 		
+		nbTests++;
+		if (nbBooks != sn.nbBooks()){
+			nbErreurs++;
+			System.out.println("Le nombre de livres a changé lors de l'ajout des review");
+		}
 		
-		
+		nbTests++;
+		if (nbMembers != sn.nbMembers()){
+			nbErreurs++;
+			System.out.println("Le nombre de membres a changé lors de l'ajout des review");
+		}
 		
 		// ce n'est pas du test, mais cela peut "rassurer"...
 		System.out.println(sn);
