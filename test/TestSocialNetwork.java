@@ -2,7 +2,7 @@ package test;
 
 /**
  * 
- * @author Yannick Omnès
+ * @author Yannick Omnès et Yann Andreu
  *
  */
 public class TestSocialNetwork {

@@ -3,7 +3,7 @@ package avis;
 import exception.BadEntry;
 
 /**
- * 
+ * Représente un Film
  * @author Yann Andreu et Yannick Omnès
  *
  */

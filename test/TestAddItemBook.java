@@ -7,7 +7,7 @@ import exception.ItemBookAlreadyExists;
 import exception.NotMember;
 
 /** 
- * @author Yannick Omnès
+ * @author Yannick Omnès et Yann Andreu
  * @date mars 2015
  * @version V1.0
  */
@@ -17,16 +17,15 @@ public class TestAddItemBook {
 
 	/**
 	 * vérifie que l'ajout d'un Book est refusé en cas de mauvaise saisie des paramètres (levée de l'exception BadEntry)
-	 * Si c'est bien le cas, ne fait rien
-	 * Sinon, affiche le message d'erreur passé en paramètre
+	 * Si c'est bien le cas, ne fait rien et renvoie 0
+	 * Sinon, affiche le message d'erreur passé en paramètre et renvoie 1
 	 * @param sn SocialNetwork avec lequel on travaille
 	 * @param pseudo pseudo du membre 
 	 * @param pwd password du membre
 	 * @param titre titre du Book
 	 * @param genre genre du Book
-	 * @param realisateur réalisateur du Book
-	 * @param scenariste scénariste du Book
-	 * @param duree durée du Book
+	 * @param auteur auteur du Book
+	 * @param nbPages nombre de pages du Book
 	 * @param idTest id du test
 	 * @param messErreur message d'erreur à  renvoyer si l'ajout est autorisé
 	 * @return 0 si le test s'est bien passé, 1 sinon
