@@ -4,31 +4,49 @@ import java.util.LinkedList;
 
 import exception.BadEntry;
 
-
+/**
+ * Représente un membre du réseau social
+ * @author Yann Andreu et Yannick Omnès
+ *
+ */
 public class Member{
 
 	/**
+	 * pseudo du Member
 	 * @uml.property  name="pseudo" readOnly="true"
 	 */
 	private String pseudo;
 
 	/**
+	 * mot de passe du Member
 	 * @uml.property  name="password"
 	 */
 	private String password;
 	
 	/**
+	 * profil du Member
 	 * @uml.property  name="profil"
 	 */
 	private String profil;
 
 	/**
+	 * Liste des Review déposées par le Member sur des Item du SocialNetwork
 	 * @uml.property  name="reviews"
 	 * @uml.associationEnd  multiplicity="(0 -1)" ordering="true" inverse="member:avis.Review"
 	 */
 	private LinkedList<Review> reviews;
 	
 	/**
+	 * Construit un nouveau Member
+	 * @param pseudo pseudo du nouveau Member
+	 * @param password mot de passe du nouveau Member
+	 * @param profil profil du nouveau Member
+	 * @throws BadEntry
+	 * <ul>
+	 *  <li>  si le pseudo n'est pas instancié ou a moins de 1 caractère autre que des espaces.</li>
+	 *  <li>  si le password n'est pas instancié ou a moins de 4 caractères autres que des leading or trailing blanks.</li>
+	 *  <li>  si le profil n'est pas instancié.</li>
+	 * </ul>  
 	 */
 	public Member(String pseudo, String password, String profil) throws BadEntry{
 		//===================================== ANALYSE DES CAS D'ERREURS =======================================
@@ -54,6 +72,13 @@ public class Member{
 
 		
 	/**
+	 * Détermine si le pseudo passé en paramètre correspond à celui du Member courant
+	 * @param pseudo pseudo à comparer à celui du Member courant
+	 * @throws BadEntry
+	 * <ul>
+	 *  <li>  si le pseudo n'est pas instancié ou a moins de 1 caractère autre que des espaces.</li>
+	 * </ul>   
+	 * @return true si le pseudo passé en paramètre correspond à celui du Member courant, false sinon
 	 */
 	public boolean hasPseudo(String pseudo) throws BadEntry{
 		// Si le pseudo n'est pas instancié
@@ -70,6 +95,12 @@ public class Member{
 	}
 	
 	/**
+	 * Détermine si le mot de passe passé en paramètre correspond à celui du Member courant
+	 * @param password le mot de passe à comparer à celui du Member courant
+	 * @throws BadEntry
+	 * <ul>
+	 *  <li>  si le password n'est pas instancié ou a moins de 4 caractères autres que des leadings or trailing blanks. </li>
+	 * </ul>
 	 */
 	public boolean passwordIs(String password) throws BadEntry{
 		// Si le password n'est pas instancié
@@ -86,6 +117,11 @@ public class Member{
 	}
 	
 	/**
+	 * Vérifie si le couple pseudo/password passé en paramètre correspond à celui du membre courant
+	 * @param pseudo le pseudo à comparer avec celui du Member courant
+	 * @param password le password à comparer avec celui du Member courant
+	 * @return true si les informations correspondent au Member courant, false sinon 
+	 * @throws BadEntry dans les cas mentionnés pour les méthodes hasPseudo et passwordIs
 	 */
 	public boolean authentificationMatches(String pseudo, String password) throws BadEntry{
 		return (this.hasPseudo(pseudo) && this.passwordIs(password));
@@ -93,6 +129,8 @@ public class Member{
 	
 	
 	/**
+	 * Ajoute une Review à la liste de Review du Member courant
+	 * @param review la review à ajouter à la liste
 	 */
 	public void addReview(Review review){
 		if (review!=null)
@@ -101,11 +139,18 @@ public class Member{
 
 	
 	/**
+	 * Renvoie une représentation textuelle du Member
+	 * @return la représentation du Member sous forme d'un String
 	 */
 	public String toString(){
 		return this.pseudo + " ("+ profil + ")\n";	
 	}
 		
+	/**
+	 * Compare l'objet passé en paramètre avec le Member courant
+	 * @param o l'objet à comparer avec le Member courant
+	 * @return true si o est égal au Member courant, false sinon
+	 */
 	public boolean equals(Object o){
 		if (o==null || !(o instanceof Member))
 			return false;

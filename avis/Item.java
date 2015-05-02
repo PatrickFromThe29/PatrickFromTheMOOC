@@ -4,10 +4,16 @@ import java.util.LinkedList;
 
 import exception.BadEntry;
 
-
+/**
+ * La classe abstraite Item est la superclasse de tous les objets susceptibles d'être évalués sur ToutAvis.
+ * Elle possède toutes les méthodes en lien avec la gestion des reviews.
+ * @author Yann Andreu et Yannick Omnès
+ *
+ */
 public abstract class Item {
 
 	/** 
+	 * Liste des reviews associées à l'item courant
 	 * @uml.property name="reviews"
 	 * @uml.associationEnd multiplicity="(0 -1)" ordering="true" inverse="item:avis.Review"
 	 */
@@ -15,6 +21,7 @@ public abstract class Item {
 
 	
 	/**
+	 * Construit un item.
 	 */
 	public Item(){
 		reviews = new LinkedList<Review>();
@@ -22,7 +29,12 @@ public abstract class Item {
 	
 	
 	/**
-	 * @throws BadEntry 
+	 * Détermine si le membre passé en paramètre a déjà déposé un avis sur l'item courant. Si oui, le met à jour. Sinon, crée une nouvelle review et l'ajoute aux listes de l'item et du membre
+	 * @param member le membre identifié comme souhaitant déposer un avis sur l'item courant
+	 * @param note la note que le membre a attribuée à l'item courant
+	 * @param commentaire le commentaire du membre sur l'item courant
+	 * @throws BadEntry
+	 * @see Review
 	 */
 	public void addOrModifyReview(Member member, float note, String commentaire) throws BadEntry{
 		Review review = new Review(member, note, commentaire); // Lève les BadEntry sur commentaire et note.
@@ -44,6 +56,8 @@ public abstract class Item {
 		
 	
 	/**
+	 * Calcule la moyenne des notes comprises dans les reviews associées à l'item courant
+	 * @return la note moyenne des reviews formulées sur l'item courant
 	 */
 	public float moyenneNoteReview(){
 		float somme = 0;
@@ -56,7 +70,10 @@ public abstract class Item {
 			
 
 
-	
+	/**
+	 * Renvoie une représentation de l'item sous forme d'un String
+	 * @return un String comprenant la représentation textuelle de l'Item courant
+	 */
 	public String toString(){
 		String s="";
 		s+= "Avis (moyenne : "+ moyenneNoteReview() +"/5) : \n";
@@ -70,6 +87,10 @@ public abstract class Item {
 
 					
 	/**
+	 * Méthode devant être redéfinie dans l'ensemble des classes filles
+	 * Détermine si deux objets sont égaux
+	 * @param o objet à comprarer à l'Item courant
+	 * @return true si o est égal à l'Item courant, false sinon
 	 */
 	public abstract boolean equals(Object o);			
 }

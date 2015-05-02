@@ -7,7 +7,7 @@ import exception.ItemFilmAlreadyExists;
 import exception.NotMember;
 
 /** 
- * @author Yannick Omnès
+ * @author Yannick Omnès et Yann Andreu
  * @date mars 2015
  * @version V1.0
  */

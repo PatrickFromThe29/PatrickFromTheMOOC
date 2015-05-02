@@ -1,5 +1,10 @@
 package test;
 
+/**
+ * 
+ * @author Yannick Omnès
+ *
+ */
 public class TestSocialNetwork {
 
 

@@ -2,31 +2,52 @@ package avis;
 
 import exception.BadEntry;
 
-
+/**
+ * 
+ * @author Yann Andreu et Yannick Omnès
+ *
+ */
 public class Film extends Item {
 
 	/**
+	 * titre du film
 	 * @uml.property  name="titre"
 	 */
 	private String titre;
 	/**
+	 * genre du film
 	 * @uml.property  name="genre"
 	 */
 	private String genre;	
 	/**
+	 * realisateur du film
 	 * @uml.property  name="realisateur"
 	 */
 	private String realisateur;
 	/**
+	 * scenariste du film
 	 * @uml.property  name="scenariste"
 	 */
 	private String scenariste;	
 	/**
+	 * durée du film
 	 * @uml.property  name="duree"
 	 */
 	private int duree;
 	
 	/**
+	 * Construit un nouveau Film
+	 * @param titre le titre du film
+	 * @param genre le genre du film
+	 * @param realisateur le réalisateur du film
+	 * @param scenariste le scenariste du film
+	 * @param duree la durée du film
+	 * @throws BadEntry
+	 * <ul>
+	 *  <li>  si le titre n'est pas instancié ou a moins de 1 caractère autre que des espaces .  </li>
+	 *  <li>  si le genre, le réalisateur ou le scénariste ne sont pas instanciés. </li>
+	 *  <li>  si la durée est négative.  </li>
+	 * </ul>   
 	 */
 	public Film(String titre, String genre, String realisateur, String scenariste, int duree) throws BadEntry{
 		super();
@@ -40,7 +61,7 @@ public class Film extends Item {
 			throw new BadEntry ("Le titre doit contenir au moins 1 caractère autre que des espaces.");
 		
 		// Si la durée n'est pas positive
-		if (duree<0)
+		if (duree<=0)
 			throw new BadEntry ("La durée doit être positive et saisie en minutes.");
 		
 		//===================================== CONSTRUCTION =======================================
@@ -53,6 +74,9 @@ public class Film extends Item {
 	}	
 	
 	/**
+	 * Compare le titre passé en paramètre avec le titre du Film courant
+	 * @param titre le titre à comparer au titre du Film courant
+	 * @return true si le titre passé en paramètre correspond au titre du film courant, false sinon
 	 */
 	public boolean titleIs(String titre) throws BadEntry{
 		//=============================== ANALYSE DES CAS D'ERREURS ================================
@@ -65,6 +89,8 @@ public class Film extends Item {
 	}
 	
 	/**
+	 * Renvoie une représentation textuelle du Film courant
+	 * @return un String comprenant la représentation textuelle du Film courant
 	 */
 	public String toString(){
 		String s= "\nTitre : "+ this.titre +"\n";
@@ -73,11 +99,14 @@ public class Film extends Item {
 		s+= "Scénariste : " + this.scenariste + "\n";
 		s+= "Durée : "+ this.duree+ "\n";
 		//s+= "Note moyenne : " + this.moyenneNotesReview() + "/5 \n";
-		s+= super.toString();
+		s+= super.toString(); // On appelle la méthode toString() de Item pour inclure l'ensemble des reviews (la liste étant private)
 		return s;	
 	}
 				
 	/**
+	 * Compare le Film courant à l'objet passé en paramètre
+	 * @param o l'objet à comparer au Film courant
+	 * @return true si l'objet o est égal au Film courant, false sinon
 	 */
 	public boolean equals(Object o){
 		if (o==null || !(o instanceof Film))
