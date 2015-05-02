@@ -134,6 +134,9 @@ public class TestReviewItemFilm {
 			System.exit(1);
 		}
 		
+		nbMembers+=2;
+		nbFilms+=3;
+		
 		//====================================== Tests =========================================
 		
 		
@@ -184,19 +187,19 @@ public class TestReviewItemFilm {
 		nbTests++;
 		if (nbFilms != sn.nbFilms()){
 			nbErreurs++;
-			System.out.println("Le nombre de film a changé lors de l'ajout des review");
+			System.out.println("Le nombre de film a changÃ© lors de l'ajout des review");
 		}
 		
 		nbTests++;
 		if (nbBooks != sn.nbBooks()){
 			nbErreurs++;
-			System.out.println("Le nombre de livres a changé lors de l'ajout des review");
+			System.out.println("Le nombre de livres a changÃ© lors de l'ajout des review");
 		}
 		
 		nbTests++;
 		if (nbMembers != sn.nbMembers()){
 			nbErreurs++;
-			System.out.println("Le nombre de membres a changé lors de l'ajout des review");
+			System.out.println("Le nombre de membres a changÃ© lors de l'ajout des review");
 		}
 		
 		// ce n'est pas du test, mais cela peut "rassurer"...

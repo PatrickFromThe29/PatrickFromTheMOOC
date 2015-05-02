@@ -17,7 +17,7 @@ import exception.NotMember;
  * @author B. Prou
  * @author Y. Andreu
  * @author Y. Omnès
- * @date février - mars 2011
+ * @date avril 2015
  * @version V0.6
  */
 
