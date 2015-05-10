@@ -255,7 +255,7 @@ public class TestAddItemBook {
 		System.out.println(sn);
 
 		// Bilan du test de addItemBook
-		System.out.println("TestsAddItemBook :   " + nbErreurs + " erreur(s) / " +  nbTests + " tests effectués");
+		System.out.println("TestAddItemBook :   " + nbErreurs + " erreur(s) / " +  nbTests + " tests effectués");
 		
 		if ((args != null) && (args.length == 2)) {        
             nbTests = nbTests + new Integer(args[0]);
