@@ -256,7 +256,7 @@ public class TestAddItemFilm {
 		System.out.println(sn);
 
 		// Bilan du test de addItemFilm
-		System.out.println("TestsAddItemFilm :   " + nbErreurs + " erreur(s) / " +  nbTests + " tests effectués");
+		System.out.println("TestAddItemFilm :   " + nbErreurs + " erreur(s) / " +  nbTests + " tests effectués");
 		
 		if ((args != null) && (args.length == 2)) {        
             nbTests = nbTests + new Integer(args[0]);

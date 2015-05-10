@@ -70,14 +70,19 @@ SocialNetwork sn = new SocialNetwork();
 		
 		System.out.println("Tests de consultations d'Items au réseau social.");
 
+		// Tests de BadEntry
 		nbTests++;
 		nbErreurs+=consultItemBadEntryTest(sn, null, "7.1", "Consultation d'un item avec nom d'item non instancié accepté");
 		nbTests++;
 		nbErreurs+=consultItemBadEntryTest(sn, "           ", "7.2", "Consultation d'un item avec uniquement des espaces accepté ");
+		
+		// Test avec des paramètres respectant les règles de syntaxe fixées
 		nbTests++;
 		nbErreurs += consultItemOkTest(sn, "50 Nuances de Grey", 2, "8.1");
 		nbTests++;
 		nbErreurs += consultItemOkTest(sn,"La grande vadrouille", 1, "8.2");
+		nbTests++;
+		nbErreurs += consultItemOkTest(sn,"Y-a-t-il un pilote dans l'avion?", 0, "8.3"); // Le fait que l'item ne soit pas connu est un cas normal : l'utilisateur n'est pas censé savoir a priori si l'item recherché existe.
 		
 		nbTests++;
 		nbErreurs += (sn.nbMembers() != nbMembers ) ? 1 : 0; //équivalent à if (sn.nbMembers != nbMembers) { nbErreurs ++}
@@ -86,15 +91,15 @@ SocialNetwork sn = new SocialNetwork();
 		nbTests++;
 		nbErreurs += (sn.nbBooks() != nbBooks ) ? 1 : 0;
 		
-		// Bilan du test de addItemBook
-				System.out.println("TestsAddItemBook :   " + nbErreurs + " erreur(s) / " +  nbTests + " tests effectués");
-				
-				if ((args != null) && (args.length == 2)) {        
-		            nbTests = nbTests + new Integer(args[0]);
-		            nbErreurs = nbErreurs + new Integer(args[1]);       
-		            args[0] = "" + nbTests;
-		            args[1] = "" + nbErreurs;
-		         }
+		// Bilan du test de ConsultItem
+		System.out.println("TestConsultItem :   " + nbErreurs + " erreur(s) / " +  nbTests + " tests effectués");
+		
+		if ((args != null) && (args.length == 2)) {        
+            nbTests = nbTests + new Integer(args[0]);
+            nbErreurs = nbErreurs + new Integer(args[1]);       
+            args[0] = "" + nbTests;
+            args[1] = "" + nbErreurs;
+         }
 			
 
 	}
