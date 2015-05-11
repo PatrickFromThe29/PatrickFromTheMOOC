@@ -2,6 +2,7 @@ package avis;
 
 
 import exception.BadEntry;
+import java.util.LinkedList;
 
 /**
  * Représente un avis déposé sur un Item du SocialNetwork
@@ -26,6 +27,13 @@ public class Review {
 	 * @uml.property  name="commentaire"
 	 */
 	private String commentaire;
+	
+	/** 
+	 * @uml.property name="evaluationsReview"
+	 * @uml.associationEnd multiplicity="(0 -1)" ordering="true" inverse="review:avis.EvaluationReview"
+	 */
+	private LinkedList evaluationsReview = null;
+	
 		
 	/**
 	 * Construit une nouvelle Review
@@ -54,6 +62,7 @@ public class Review {
 		this.member = member;
 		this.note = note;
 		this.commentaire = commentaire;	
+		this.evaluationsReview = new LinkedList<EvaluationReview>();
 	}
 
 	
@@ -101,15 +110,16 @@ public class Review {
 		return note;
 	}
 	
+		
 	/**
 	 * Compare une Review avec la Review courante
 	 * @param review Review à comparer avec la Review courante
 	 * @return true si la Review review est égale à la Review courante, faux sinon.
 	 */
-	public boolean equals(Review review){
-		if (!(review instanceof Review))
+	public boolean equals(Object review){
+		if (review==null || !(review instanceof Review))
 			return false;
-		return (this.member.equals(review.member) && this.note == review.note && this.commentaire.equals(review.commentaire));
+		return (this.member.equals(((Review)review).member) && this.note == ((Review)review).note && this.commentaire.equals(((Review)review).commentaire));
 	}
 			
 	/**

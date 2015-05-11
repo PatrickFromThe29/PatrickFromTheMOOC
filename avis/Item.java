@@ -5,17 +5,16 @@ import java.util.LinkedList;
 import exception.BadEntry;
 
 /**
- * La classe abstraite Item est la superclasse de tous les objets susceptibles d'être évalués sur ToutAvis.
- * Elle possède toutes les méthodes en lien avec la gestion des reviews.
- * @author Yann Andreu et Yannick Omnès
- *
+ * La classe abstraite Item est la superclasse de tous les objets susceptibles d'être évalués sur ToutAvis. Elle possède toutes les méthodes en lien avec la gestion des reviews.
+ * @author   Yann Andreu et Yannick Omnès
+ * @uml.dependency   supplier="avis.Basics"
  */
 public abstract class Item {
 
-	/** 
+	/**
 	 * Liste des reviews associées à l'item courant
-	 * @uml.property name="reviews"
-	 * @uml.associationEnd multiplicity="(0 -1)" ordering="true" inverse="item:avis.Review"
+	 * @uml.property   name="reviews"
+	 * @uml.associationEnd   multiplicity="(0 -1)" ordering="true" inverse="item:avis.Review"
 	 */
 	private LinkedList<Review> reviews;
 
