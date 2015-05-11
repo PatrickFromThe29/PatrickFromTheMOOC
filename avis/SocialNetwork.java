@@ -387,7 +387,7 @@ public class SocialNetwork {
 	 * @throws NotItem : si le titre du film sur lequel porte l'évaluation de Review ne désigne pas un film connu
 	 * @throws NotMember :  si l'un des deux pseudo ne désigne pas un membre existant
 	 */
-	public void reviewOpinionFilm(String pseudo, String password, String pseudoMembreDeposant, String titre, float note) throws BadEntry, NotItem, NotMember
+	public void reviewOpinionFilm(String pseudo, String password, String pseudoMembreDeposant, String titre, float note) throws BadEntry, NotItem, NotMember, Exception
 	{
 		
 	}
@@ -410,7 +410,7 @@ public class SocialNetwork {
 	 * @throws NotItem : si le titre du Book sur lequel porte l'évaluation de Review ne désigne pas un Book connu
 	 * @throws NotMember :  si l'un des deux pseudo ne désigne pas un membre existant
 	 */
-	public void reviewOpinionBook(String pseudo, String password, String pseudoMembreDeposant, String titre, float note) throws BadEntry, NotItem, NotMember
+	public void reviewOpinionBook(String pseudo, String password, String pseudoMembreDeposant, String titre, float note) throws BadEntry, NotItem, NotMember, Exception
 	{
 		
 	}

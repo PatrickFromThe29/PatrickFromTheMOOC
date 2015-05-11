@@ -32,7 +32,7 @@ public class Review {
 	 * @uml.property name="evaluationsReview"
 	 * @uml.associationEnd multiplicity="(0 -1)" ordering="true" inverse="review:avis.EvaluationReview"
 	 */
-	private LinkedList evaluationsReview = null;
+	private LinkedList<EvaluationReview> evaluationsReview = null;
 	
 		
 	/**
@@ -110,6 +110,25 @@ public class Review {
 		return note;
 	}
 	
+	/**
+	 * ajoute ou modifie une Evaluation portant sur la Review courante
+	 * @param memberEvaluateur membre qui évalue la Review courante
+	 * @param note note attribuée par le memberEvaluateur à la Review courante
+	 * @throws BadEntry si la note n'est pas comprise entre 0 et 5 ou si le memberEvaluateur vaut null
+	 */
+	public void addOrModifyEvaluation(Member memberEvaluateur, float note) throws BadEntry{
+		
+		// Si le memberEvaluateur a déjà déposé un avis, on le modifie.
+		for(EvaluationReview er : evaluationsReview)
+			if (er.memberIs(memberEvaluateur))
+			{
+				er.modify(note, memberEvaluateur);
+				return;
+			}
+		// Sinon, on en crée un nouveau.
+		this.evaluationsReview.add(new EvaluationReview(note, memberEvaluateur));		
+	}
+	
 		
 	/**
 	 * Compare une Review avec la Review courante
@@ -132,5 +151,4 @@ public class Review {
 		s+= "Commentaire : "+ this.commentaire;
 		return s;
 	}
-
 }

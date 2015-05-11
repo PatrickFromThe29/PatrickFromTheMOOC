@@ -136,7 +136,6 @@ public class Member{
 		if (review!=null)
 			reviews.add(review);
 	}
-
 	
 	/**
 	 * Renvoie une représentation textuelle du Member
@@ -159,4 +158,8 @@ public class Member{
 		else
 			return false;	
 	 }
+
+
+		
+
 }

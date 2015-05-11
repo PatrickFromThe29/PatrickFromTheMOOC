@@ -53,7 +53,14 @@ public class EvaluationReview {
 		//===================== CONSTRUCTION DE L'EVALUATION DE REVIEW ===============================
 		this.member = member;
 		this.note = note;
- }
+	}
+	
+	/**
+	 */
+	public boolean memberIs(Member member){
+		return (this.member.equals(member));
+	}
+	
 	
 	
 

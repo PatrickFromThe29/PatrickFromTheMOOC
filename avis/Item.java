@@ -1,5 +1,6 @@
 package avis;
 
+
 import java.util.LinkedList;
 
 import exception.BadEntry;
@@ -66,7 +67,22 @@ public abstract class Item {
 		return (somme/(float)(reviews.size()));
 	}
 
-			
+	
+	/**
+	 * Evalue une des Review rattachée à l'Item courant en la sélectionnant par le Member qui l'a déposée
+	 * @param memberEvaluateur Membre qui évalue une Review
+	 * @param note note à attribuer à la Review évaluée
+	 */
+	public void evaluateReview(Member memberDeposant, Member memberEvaluateur, float note)	throws BadEntry, Exception {
+	
+		for(Review r : reviews)
+			if(r.membreIs(memberDeposant))
+			{
+				r.addOrModifyEvaluation(memberEvaluateur, note);
+				return;
+			}
+		throw new Exception("Le membre dont vous voulez évaluer l'avis n'a pas déposé d'avis sur l'Item courant");
+		}		
 
 
 	/**
@@ -91,5 +107,10 @@ public abstract class Item {
 	 * @param o objet à comprarer à l'Item courant
 	 * @return true si o est égal à l'Item courant, false sinon
 	 */
-	public abstract boolean equals(Object o);			
+	public abstract boolean equals(Object o);
+
+
+		
+	
+				
 }
