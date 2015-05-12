@@ -12,6 +12,12 @@ import exception.BadEntry;
  */
 public abstract class Item {
 
+	/** 
+	 * titre de l'Item
+	 * @uml.property name="titre"
+	 */
+	protected String titre;
+	
 	/**
 	 * Liste des reviews associées à l'item courant
 	 * @uml.property   name="reviews"
@@ -82,8 +88,22 @@ public abstract class Item {
 				return;
 			}
 		throw new Exception("Le membre dont vous voulez évaluer l'avis n'a pas déposé d'avis sur l'Item courant");
-		}		
-
+		}	
+	
+	/**
+	 * Compare le titre passé en paramètre avec le titre de l'Item courant
+	 * @param titre le titre à comparer au titre de l'Item courant
+	 * @return true si le titre passé en paramètre correspond au titre de l'Item courant, false sinon
+	 */
+	public boolean titleIs(String titre) throws BadEntry {
+		//=============================== ANALYSE DES CAS D'ERREURS ================================
+		// Si le titre de l'Item envoyé est null ou comporte moins de 1 caractère qui n'est pas un espace, BadEntry est levée.
+		if (titre==null || titre.replaceAll(" ", "").length()<1)
+			throw new BadEntry("Le nom de l'Item à rechercher doit être instancié et comporter au moins un caractère différent d'un espace)");
+		
+		//===================================== COMPARAISON ========================================
+		return (this.titre.toUpperCase().equals(titre.trim().toUpperCase()));	
+	}
 
 	/**
 	 * Renvoie une représentation de l'item sous forme d'un String
@@ -108,6 +128,13 @@ public abstract class Item {
 	 * @return true si o est égal à l'Item courant, false sinon
 	 */
 	public abstract boolean equals(Object o);
+
+
+
+
+
+		
+
 
 
 		

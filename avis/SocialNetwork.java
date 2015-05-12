@@ -445,22 +445,17 @@ public class SocialNetwork {
 	{
 		for (Item item : items)
 		{
-			/* Il est important de noter que l'on traite chaque sorte d'Item séparément.
-			 * En effet, on part du principe que le SocialNetwork peut être amené à accueillir d'autres sortes d'Item
-			 * On ne peut alors être certain que chaque item sera désigné par nu titre identifiable avec une méthode titreIs()
-			 * C'est aussi pour cette raison que titreIs n'est ni définie ni abstraite dans Item : on ne peut garantir son existance dans toutes les classes filles à venir
-			 */
 			switch (itemType)
 			{
 			case BOOK:
 				if(item instanceof Book)
-					if(((Book)item).titleIs(titre))
+					if(item.titleIs(titre))
 						return item;
 				break;
 			
 			case FILM:
 				if(item instanceof Film)
-					if(((Film)item).titleIs(titre))
+					if(item.titleIs(titre))
 						return item;
 				break;
 			}

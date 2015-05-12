@@ -94,15 +94,16 @@ public class Member{
 		return (this.pseudo.toUpperCase().equals(pseudo.trim().toUpperCase()));	
 	}
 	
-	/**
+		
+	/** 
 	 * Détermine si le mot de passe passé en paramètre correspond à celui du Member courant
 	 * @param password le mot de passe à comparer à celui du Member courant
-	 * @throws BadEntry
-	 * <ul>
+	 * @throws BadEntry <ul>
 	 *  <li>  si le password n'est pas instancié ou a moins de 4 caractères autres que des leadings or trailing blanks. </li>
-	 * </ul>
+	 *  </ul>
 	 */
-	public boolean passwordIs(String password) throws BadEntry{
+	private boolean passwordIs(String password)	throws BadEntry 
+	{
 		// Si le password n'est pas instancié
 		if (password==null)
 			throw new BadEntry("Le password doit être instancié.");
@@ -114,8 +115,8 @@ public class Member{
 		// Pas de toUpperCase : on tient compte de la casse dans le password
 		// trim pour supprimer les leading et trailing blanks (déjà fait pour this.password à la construction)
 		return (this.password.equals(password.trim()));
-	}
-	
+	 }
+
 	/**
 	 * Vérifie si le couple pseudo/password passé en paramètre correspond à celui du membre courant
 	 * @param pseudo le pseudo à comparer avec celui du Member courant

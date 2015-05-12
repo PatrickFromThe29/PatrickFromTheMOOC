@@ -10,11 +10,6 @@ import exception.BadEntry;
 public class Book extends Item {
 	
 	/**
-	 * titre du livre
-	 * @uml.property  name="titre"
-	 */
-	private String titre;
-	/**
 	 * genre du livre
 	 * @uml.property  name="genre"
 	 */
@@ -67,21 +62,6 @@ public class Book extends Item {
 		this.nbPages = nbPages;
 	}
 	
-	/**
-	 * Compare le titre passé en paramètre avec le titre du Book courant
-	 * @param titre le titre dont on veut tester l'égalité avec le titre du Book courant
-	 * @throws BadEntry si le titre n'est pas instancié ou comporte moins de 1 caractère qui n'est pas un espace
-	 * @return true si le titre est celui du Book courant, false sinon.
-	 */
-	public boolean titleIs(String titre) throws BadEntry{
-		//=============================== ANALYSE DES CAS D'ERREURS ================================
-		// Si le titre du Book envoyé est null ou comporte moins de 1 caractère qui n'est pas un espace, BadEntry est levée.
-		if (titre==null || titre.replaceAll(" ", "").length()<1)
-			throw new BadEntry("Le nom du livre à rechercher doit être instancié et comporter au moins un caractère différent d'un espace)");
-		
-		//===================================== COMPARAISON ========================================
-		return (this.titre.toUpperCase().equals(titre.trim().toUpperCase()));	
-	}
 	
 	/**
 	 * Renvoie la représentation du Book sous forme d'une chaîne de caractères

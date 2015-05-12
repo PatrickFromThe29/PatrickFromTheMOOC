@@ -10,11 +10,6 @@ import exception.BadEntry;
 public class Film extends Item {
 
 	/**
-	 * titre du film
-	 * @uml.property  name="titre"
-	 */
-	private String titre;
-	/**
 	 * genre du film
 	 * @uml.property  name="genre"
 	 */
@@ -72,21 +67,6 @@ public class Film extends Item {
 		this.realisateur = realisateur;
 		this.duree = duree;
 	}	
-	
-	/**
-	 * Compare le titre passé en paramètre avec le titre du Film courant
-	 * @param titre le titre à comparer au titre du Film courant
-	 * @return true si le titre passé en paramètre correspond au titre du film courant, false sinon
-	 */
-	public boolean titleIs(String titre) throws BadEntry{
-		//=============================== ANALYSE DES CAS D'ERREURS ================================
-		// Si le titre du Film envoyé est null ou comporte moins de 1 caractère qui n'est pas un espace, BadEntry est levée.
-		if (titre==null || titre.replaceAll(" ", "").length()<1)
-			throw new BadEntry("Le nom du film à rechercher doit être instancié et comporter au moins un caractère différent d'un espace)");
-		
-		//===================================== COMPARAISON ========================================
-		return (this.titre.toUpperCase().equals(titre.trim().toUpperCase()));	
-	}
 	
 	/**
 	 * Renvoie une représentation textuelle du Film courant
