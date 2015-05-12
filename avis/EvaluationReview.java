@@ -60,8 +60,18 @@ public class EvaluationReview {
 	public boolean memberIs(Member member){
 		return (this.member.equals(member));
 	}
-	
-	
-	
-
+		
+	/**
+	 */
+	public String toString()
+	{
+		return "";	
+	}
+			
+	/**
+	 */
+	public boolean equals(Object o)
+	{
+		return false;	
+	}
 }

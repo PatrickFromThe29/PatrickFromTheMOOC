@@ -1,5 +1,6 @@
 package avis;
 
+
 import java.util.LinkedList;
 
 
@@ -128,8 +129,7 @@ public class SocialNetwork {
 		// Si on arrive là, c'est que les paramètres étaient corrects sur la forme.
 		// On parcourt la liste de membres.
 		// Si le pseudo correspond déjà à un membre, on refuse l'inscription
-		for(Member m:members)
-			if (m.hasPseudo(pseudo))
+		if (findMemberByPseudo(pseudo) != null)
 				throw new MemberAlreadyExists();
 		
 		// ====================================== AJOUT D'UN MEMBRE ===============================================
@@ -165,28 +165,21 @@ public class SocialNetwork {
 	 * 
 	 */
 	public void addItemFilm(String pseudo, String password, String titre, String genre, String realisateur, String scenariste, int duree) throws BadEntry, NotMember, ItemFilmAlreadyExists {
-		//===================================== ANALYSE DES CAS D'ERREURS =======================================
 		// On tente l'ajout d'un film. Le constructeur de Film peut lever BadEntry si nécessaire
 		Film film = new Film(titre, genre, realisateur, scenariste, duree);
 
 		// On recherche le membre
-		for (Member m: members)
-			if(m.authentificationMatches(pseudo, password)) // Si les infos de connexion sont reconnues
-			{
-				// Si le film existe déjà
-				for (Item i : items)
-					if (i instanceof Film) // On recherche uniquement parmi les films
-					{
-						if(((Film)i).titleIs(titre))
-							throw new ItemFilmAlreadyExists();
-					}
-				
-				// ====================================== AJOUT D'UN FILM ===============================================	
-				// Si on arrive à cette instruction, c'est que toutes les validations ont été effectuées avec succès.
-				items.add(film);
-				return; 
-			}
-		throw new NotMember("Les informations fournies n'ont pas permis de vous authentifier.");
+		Member member = findMemberByPseudo(pseudo);
+		if(member!=null && member.authentificationMatches(pseudo, password)) // Si les infos de connexion sont reconnues
+		{
+			// Si le film existe déjà
+			if(findItemByName(titre, ItemType.FILM)!=null)
+				throw new ItemFilmAlreadyExists();
+			
+			// Si on arrive à cette instruction, c'est que toutes les validations ont été effectuées avec succès.
+			items.add(film);
+		}
+		else throw new NotMember("Les informations fournies n'ont pas permis de vous authentifier.");
 	}
 
 	/**
@@ -214,28 +207,21 @@ public class SocialNetwork {
 	 * 
 	 */
 	public void addItemBook(String pseudo, String password, String titre, String genre, String auteur, int nbPages) throws  BadEntry, NotMember, ItemBookAlreadyExists{
-		//===================================== ANALYSE DES CAS D'ERREURS =======================================
 		// On tente l'ajout d'un livre. Le constructeur de Book peut lever BadEntry si nécessaire
 		Book book = new Book(titre, genre, auteur, nbPages);
 
 		// On recherche le membre
-		for (Member m: members)
-			if(m.authentificationMatches(pseudo, password)) // Si les infos de connexion sont reconnues
-			{
-				// Si le livre existe déjà
-				for (Item i : items)
-					if (i instanceof Book) // On recherche uniquement parmi les livres
-					{
-						if(((Book)i).titleIs(titre))
-							throw new ItemBookAlreadyExists();
-					}
-				
-				// ====================================== AJOUT D'UN LIVRE ===============================================	
-				// Si on arrive à cette instruction, c'est que toutes les validations ont été effectuées avec succès.
-				items.add(book);
-				return; 
-			}
-		throw new NotMember("Les informations fournies n'ont pas permis de vous authentifier.");
+		Member member = findMemberByPseudo(pseudo);
+		if(member!=null && member.authentificationMatches(pseudo, password)) // Si les infos de connexion sont reconnues
+		{
+			// Si le livre existe déjà
+			if (findItemByName(titre, ItemType.BOOK)!=null)
+				throw new ItemBookAlreadyExists();
+
+			// Si on arrive à cette instruction, c'est que toutes les validations ont été effectuées avec succès.
+			items.add(book); 
+		}
+		else throw new NotMember("Les informations fournies n'ont pas permis de vous authentifier.");
 	}
 
 	/**
@@ -304,21 +290,18 @@ public class SocialNetwork {
 	 */
 	public float reviewItemFilm(String pseudo, String password, String titre, float note, String commentaire) throws BadEntry, NotMember, NotItem {
 		
-		for (Member member : members) // On parcourt la liste des membres
+		Member member = findMemberByPseudo(pseudo);
+		if (member!=null && member.authentificationMatches(pseudo, password)) // Vérification de l'identité, lève les BadEntry sur pseudo et password
 		{
-			if (member.authentificationMatches(pseudo, password)) // Vérification de l'identité, lève les BadEntry sur pseudo et password
+			Item film = findItemByName(titre, ItemType.FILM);
+			if (film!=null) // Vérification du titre, lève les BadEntry sur le titre
 			{
-				for (Item i : items)// On parcourt la liste des items
-					if (i instanceof Film) // On ne travaille que sur les Film
-						if (((Film)i).titleIs(titre)) // Vérification du titre, lève les BadEntry sur le titre
-						{
-							i.addOrModifyReview(member, note, commentaire); // Crée/modifie la review, la rattache au Member concerné et lève BadEntry si besoin
-							return i.moyenneNoteReview();
-						}
-				throw new NotItem("Le titre saisi n'est pas celui d'un film connu. Ajoutez un nouveau film au réseau social pour pouvoir l'évaluer.");
+				film.addOrModifyReview(member, note, commentaire); // Crée/modifie la review, la rattache au Member concerné et lève BadEntry si besoin
+				return film.moyenneNoteReview();
 			}
+			else throw new NotItem("Le titre saisi n'est pas celui d'un film connu. Ajoutez un nouveau film au réseau social pour pouvoir l'évaluer.");
 		}
-		throw new NotMember("Les informations fournies n'ont pas permis de vous authentifier");
+		else throw new NotMember("Les informations fournies n'ont pas permis de vous authentifier");
 		// Pas besoin de return en fin de méthode : l'exception NotMember est forcément levée si on sort du foreach principal
 		// NotItem est levée si on a trouvé le membre mais que le film n'existe pas.
 		// Si le membre est trouvé, que le film existe et que des paramètres sont incorrects, BadEntry sera levée par une des méthodes appelées et remontée à celle-ci
@@ -352,21 +335,18 @@ public class SocialNetwork {
 	 * @return la note moyenne des notes sur ce livre
 	 */
 	public float reviewItemBook(String pseudo, String password, String titre, float note, String commentaire) throws BadEntry, NotMember, NotItem {
-		for (Member member : members) // On parcourt la liste des membres
+		Member member = findMemberByPseudo(pseudo);
+		if (member!=null && member.authentificationMatches(pseudo, password)) // Vérification de l'identité, lève les BadEntry sur pseudo et password
 		{
-			if (member.authentificationMatches(pseudo, password)) // Vérification de l'identité, lève les BadEntry sur pseudo et password
+			Item book = findItemByName(titre, ItemType.BOOK);
+			if (book!=null) // Vérification du titre, lève les BadEntry sur le titre
 			{
-				for (Item i : items)// On parcourt la liste des items
-					if (i instanceof Book) // On ne travaille que sur les Book
-						if (((Book)i).titleIs(titre)) // Vérification du titre, lève les BadEntry sur le titre
-						{
-							i.addOrModifyReview(member, note, commentaire); // Crée/modifie la review, la rattache au Member concerné et lève BadEntry si besoin
-							return i.moyenneNoteReview();
-						}
-				throw new NotItem("Le titre saisi n'est pas celui d'un livre connu. Ajoutez un nouveau livre au réseau social pour pouvoir l'évaluer.");
+				book.addOrModifyReview(member, note, commentaire); // Crée/modifie la review, la rattache au Member concerné et lève BadEntry si besoin
+				return book.moyenneNoteReview();
 			}
+			else throw new NotItem("Le titre saisi n'est pas celui d'un Book connu. Ajoutez un nouveau Book au réseau social pour pouvoir l'évaluer.");
 		}
-		throw new NotMember("Les informations fournies n'ont pas permis de vous authentifier");
+		else throw new NotMember("Les informations fournies n'ont pas permis de vous authentifier");
 	}
 	
 	/**
@@ -389,30 +369,103 @@ public class SocialNetwork {
 	 */
 	public void reviewOpinionFilm(String pseudo, String password, String pseudoMembreDeposant, String titre, float note) throws BadEntry, NotItem, NotMember, Exception
 	{
-		
+		reviewOpinion(pseudo, password, pseudoMembreDeposant, titre, note, ItemType.FILM);
 	}
 		
-	/**
+		
+			
+	/** 
 	 * Permet à un membre de noter la Review émise par un autre membre sur un Book
 	 * @param pseudo pseudo du membre souhaitant noter une Review
 	 * @param password password du membre souhaitant noter une Review
 	 * @param pseudoMembreDeposant pseudo du membre dont on veut évaluer une Review
 	 * @param titre titre du Book sur lequel la Review à évaluer a été déposée
 	 * @param note note à attribuer à la review
-	 * @throws BadEntry:
-	 * <ul>
+	 * @throws BadEntry :
+	 *  <ul>
 	 *  <li>  si le pseudo  de l'évaluateur n'est pas instancié ou a moins de 1 caractère autre que des espaces .  </li>
 	 *  <li>  si le pseudo  du membre évalué n'est pas instancié ou a moins de 1 caractère autre que des espaces .  </li>
 	 *  <li>  si le password de l'évaluateur n'est pas instancié ou a moins de 4 caractères autres que des leadings or trailing blanks. </li>
 	 *  <li>  si le titre n'est pas instancié ou a moins de 1 caractère autre que des espaces.  </li>
 	 *  <li>  si la note n'est pas comprise entre 0.0 et 5.0. </li>
-	 * </ul><br>  
+	 *  </ul><br>  
 	 * @throws NotItem : si le titre du Book sur lequel porte l'évaluation de Review ne désigne pas un Book connu
 	 * @throws NotMember :  si l'un des deux pseudo ne désigne pas un membre existant
 	 */
-	public void reviewOpinionBook(String pseudo, String password, String pseudoMembreDeposant, String titre, float note) throws BadEntry, NotItem, NotMember, Exception
+	public void reviewOpinionBook(String pseudo, String password, String pseudoMembreDeposant, String titre, float note) throws BadEntry, NotItem, NotMember, Exception 
 	{
+		reviewOpinion(pseudo, password, pseudoMembreDeposant, titre, note, ItemType.BOOK);
+	}
+	
 		
+		
+	private void reviewOpinion(String pseudo, String password, String pseudoMembreDeposant, String titre, float note, ItemType itemType) throws BadEntry, NotItem, NotMember, Exception 
+	{
+		//===================================== ANALYSE DES CAS D'ERREURS =======================================
+		// Si les deux pseudos sont égaux (il est interdit à un membre de noter ses propres avis)
+		if (pseudo.trim().toUpperCase().equals(pseudoMembreDeposant.trim().toUpperCase()))
+				throw new BadEntry ("Vous n'êtes pas autorisé à noter vos propres avis.");
+	
+		//========================================== TRAITEMENTS ============================================
+		// Rechercher le membre évaluateur et vérifier l'authentification
+		Member memberEvaluateur = findMemberByPseudo(pseudo);
+		if (memberEvaluateur == null || !memberEvaluateur.authentificationMatches(pseudo, password))
+			throw new NotMember("Les informations fournies n'ont pas permis de vous authentifier");
+		
+		// Rechercher le membre déposant
+		Member memberDeposant = findMemberByPseudo(pseudoMembreDeposant);
+		if (memberDeposant == null)
+			throw new NotMember("Aucun membre ne correspond au pseudo spécifié.");
+		
+		// Rechercher l'item
+		Item item = findItemByName(titre, itemType);
+		if (item == null)
+			throw new NotItem ("L'item recherché ne fait pas partie du Social Network");
+		
+		// Passer la main à l'item en question
+		item.evaluateReview(memberDeposant, memberEvaluateur, note);	
+	}
+	
+	
+	/**
+	 * @throws BadEntry
+	 */
+	private Member findMemberByPseudo(String pseudo) throws BadEntry
+	{
+		for (Member member : members)
+			if (member.hasPseudo(pseudo))
+				return member;
+		return null;
+	}
+
+			
+	/**
+	 */
+	private Item findItemByName(String titre, ItemType itemType) throws BadEntry
+	{
+		for (Item item : items)
+		{
+			/* Il est important de noter que l'on traite chaque sorte d'Item séparément.
+			 * En effet, on part du principe que le SocialNetwork peut être amené à accueillir d'autres sortes d'Item
+			 * On ne peut alors être certain que chaque item sera désigné par nu titre identifiable avec une méthode titreIs()
+			 * C'est aussi pour cette raison que titreIs n'est ni définie ni abstraite dans Item : on ne peut garantir son existance dans toutes les classes filles à venir
+			 */
+			switch (itemType)
+			{
+			case BOOK:
+				if(item instanceof Book)
+					if(((Book)item).titleIs(titre))
+						return item;
+				break;
+			
+			case FILM:
+				if(item instanceof Film)
+					if(((Film)item).titleIs(titre))
+						return item;
+				break;
+			}
+		}
+		return null;
 	}
 
 
@@ -449,4 +502,5 @@ public class SocialNetwork {
 		return s;
 
 	}
+
 }
