@@ -14,8 +14,8 @@ public class EvaluationReview {
 	 * @uml.associationEnd  inverse="evaluationReview:avis.Member"
 	 */
 	private Member member;
-	/**
-	 * @uml.property  name="note"
+	/** 
+	 * @uml.property name="note" readOnly="true"
 	 */
 	private float note;
 		
@@ -37,7 +37,14 @@ public class EvaluationReview {
 		
 	}
 
-		
+	/**
+	 * Getter of the property <tt>note</tt>
+	 * @return  Returns the note.
+	 * @uml.property  name="note"
+	 */
+	public float getNote() {
+		return note;
+	}	
 		
 		
 	public void modify(float note, Member member) throws BadEntry{

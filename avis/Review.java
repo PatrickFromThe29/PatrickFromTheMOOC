@@ -102,15 +102,6 @@ public class Review {
 	}
 	
 	/**
-	 * Getter of the property <tt>note</tt>
-	 * @return  Returns the note.
-	 * @uml.property  name="note"
-	 */
-	public float getNote() {
-		return note;
-	}
-	
-	/**
 	 * ajoute ou modifie une Evaluation portant sur la Review courante
 	 * @param memberEvaluateur membre qui évalue la Review courante
 	 * @param note note attribuée par le memberEvaluateur à la Review courante
@@ -150,5 +141,15 @@ public class Review {
 		s+= "Note : "+ this.note +"/5 \n";
 		s+= "Commentaire : "+ this.commentaire;
 		return s;
+	}
+
+
+	/**
+	 * Getter of the property <tt>note</tt>
+	 * @return  Returns the note.
+	 * @uml.property  name="note"
+	 */
+	public float getNote() {
+		return note;
 	}
 }

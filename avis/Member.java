@@ -28,6 +28,11 @@ public class Member{
 	 * @uml.property  name="profil"
 	 */
 	private String profil;
+	
+	/**
+	 * @uml.property  name="karma" readOnly="true"
+	 */
+	private float karma;
 
 	/**
 	 * Liste des Review déposées par le Member sur des Item du SocialNetwork
@@ -68,6 +73,16 @@ public class Member{
 		this.password= password.trim();
 		this.profil = profil;
 		this.reviews = new LinkedList<Review>();
+		this.karma = 2.5f; // on attribue un karma moyen à un nouvel utilisateur
+	}
+	
+	/**
+	 * Getter of the property <tt>karma</tt>
+	 * @return  Returns the karma.
+	 * @uml.property  name="karma"
+	 */
+	public float getKarma() {
+		return karma;
 	}
 
 		
@@ -159,8 +174,4 @@ public class Member{
 		else
 			return false;	
 	 }
-
-
-		
-
 }
