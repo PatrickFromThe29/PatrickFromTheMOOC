@@ -27,20 +27,28 @@ public class TestSocialNetwork {
 	      TestAddItemFilm.main(resultats);
 	      
 	      System.out.println("\n\n ***************************************\n");
-
-	      TestReviewItemFilm.main(resultats);
-	      
-	      System.out.println("\n\n ***************************************\n");
 	      
 	      TestAddItemBook.main(resultats);
 	      
 	      System.out.println("\n\n ***************************************\n");
 
-	      TestReviewItemBook.main(resultats);
+	      TestConsultItem.main(resultats);
 	      
 	      System.out.println("\n\n ***************************************\n");
 	      
-	      TestConsultItem.main(resultats);
+	      TestReviewOpinionItemBook.main(resultats);
+	      
+	      System.out.println("\n\n ***************************************\n");
+	      
+	      TestReviewOpinionItemFilm.main(resultats);
+	      
+	      System.out.println("\n\n ***************************************\n");
+	      
+	      TestReviewItemFilm.main(resultats);
+	      
+	      System.out.println("\n\n ***************************************\n");
+	      
+	      TestReviewItemBook.main(resultats);
 	      
 	      System.out.println("\n\n ***************************************\n");
 	      
