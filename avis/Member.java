@@ -174,4 +174,18 @@ public class Member{
 		else
 			return false;	
 	 }
+
+		
+	/**
+	 * Met à jour le karma du Member.
+	 * La méthode consiste à faire la moyenne des moyennes des notes de chaque Review.
+	 * Le karma est compris entre 0.0 et 5.0
+	 * Il est actualisé à chaque notation d'une Review par un membre
+	 */
+	public void updateKarma(){
+		float somme = 0;
+		for (Review review : reviews)
+			somme = review.moyenneEvaluationsReview();
+		this.karma = somme/(float)(reviews.size());	
+	}
 }

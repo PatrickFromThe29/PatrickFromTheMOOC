@@ -1,6 +1,5 @@
 package avis;
 
-
 import java.util.LinkedList;
 
 
@@ -349,31 +348,33 @@ public class SocialNetwork {
 		else throw new NotMember("Les informations fournies n'ont pas permis de vous authentifier");
 	}
 	
-	/**
+		
+	/** 
 	 * Permet à un membre de noter la Review émise par un autre membre sur un Film
 	 * @param pseudo pseudo du membre souhaitant noter une Review
 	 * @param password password du membre souhaitant noter une Review
 	 * @param pseudoMembreDeposant pseudo du membre dont on veut évaluer une Review
 	 * @param titre titre du Film sur lequel la Review à évaluer a été déposée
 	 * @param note note à attribuer à la review
-	 * @throws BadEntry:
-	 * <ul>
+	 * @throws BadEntry :
+	 *  <ul>
 	 *  <li>  si le pseudo  de l'évaluateur n'est pas instancié ou a moins de 1 caractère autre que des espaces .  </li>
 	 *  <li>  si le pseudo  du membre évalué n'est pas instancié ou a moins de 1 caractère autre que des espaces .  </li>
 	 *  <li>  si le password de l'évaluateur n'est pas instancié ou a moins de 4 caractères autres que des leadings or trailing blanks. </li>
 	 *  <li>  si le titre n'est pas instancié ou a moins de 1 caractère autre que des espaces.  </li>
 	 *  <li>  si la note n'est pas comprise entre 0.0 et 5.0. </li>
-	 * </ul><br>  
+	 *  </ul><br>  
 	 * @throws NotItem : si le titre du film sur lequel porte l'évaluation de Review ne désigne pas un film connu
 	 * @throws NotMember :  si l'un des deux pseudo ne désigne pas un membre existant
 	 */
-	public void reviewOpinionFilm(String pseudo, String password, String pseudoMembreDeposant, String titre, float note) throws BadEntry, NotItem, NotMember, Exception
+	public void reviewOpinionItemFilm(String pseudo, String password, String pseudoMembreDeposant, String titre, float note) throws BadEntry, NotItem, NotMember, Exception 
 	{
 		reviewOpinion(pseudo, password, pseudoMembreDeposant, titre, note, ItemType.FILM);
 	}
 		
 		
 			
+		
 	/** 
 	 * Permet à un membre de noter la Review émise par un autre membre sur un Book
 	 * @param pseudo pseudo du membre souhaitant noter une Review
@@ -392,7 +393,7 @@ public class SocialNetwork {
 	 * @throws NotItem : si le titre du Book sur lequel porte l'évaluation de Review ne désigne pas un Book connu
 	 * @throws NotMember :  si l'un des deux pseudo ne désigne pas un membre existant
 	 */
-	public void reviewOpinionBook(String pseudo, String password, String pseudoMembreDeposant, String titre, float note) throws BadEntry, NotItem, NotMember, Exception 
+	public void reviewOpinionItemBook(String pseudo, String password, String pseudoMembreDeposant, String titre, float note) throws BadEntry, NotItem, NotMember, Exception 
 	{
 		reviewOpinion(pseudo, password, pseudoMembreDeposant, titre, note, ItemType.BOOK);
 	}

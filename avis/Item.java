@@ -67,6 +67,10 @@ public abstract class Item {
 	 */
 	public float moyenneNoteReview(){
 		float somme = 0;
+		
+		if (reviews.size() == 0)
+			return 0.0f;
+					
 		for (Review review : reviews)
 			somme+=review.getNote();
 		
@@ -85,10 +89,11 @@ public abstract class Item {
 			if(r.membreIs(memberDeposant))
 			{
 				r.addOrModifyEvaluation(memberEvaluateur, note);
+				memberDeposant.updateKarma(); // A chaque note déposée sur l'avis d'un membre, il faut actualiser le karma de celui-ci.
 				return;
 			}
 		throw new Exception("Le membre dont vous voulez évaluer l'avis n'a pas déposé d'avis sur l'Item courant");
-		}	
+	}	
 	
 	/**
 	 * Compare le titre passé en paramètre avec le titre de l'Item courant

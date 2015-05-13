@@ -113,7 +113,7 @@ public class Review {
 		for(EvaluationReview er : evaluationsReview)
 			if (er.memberIs(memberEvaluateur))
 			{
-				er.modify(note, memberEvaluateur);
+				er.modify(note);
 				return;
 			}
 		// Sinon, on en crée un nouveau.
@@ -151,5 +151,21 @@ public class Review {
 	 */
 	public float getNote() {
 		return note;
+	}
+		
+	/**
+	 * Calcule et renvoie la moyenne des notes formulées par les membres sur la Reviex courante
+	 * @return La moyenne des notes portant sur la Review courante
+	 */
+	public float moyenneEvaluationsReview(){
+		float somme = 0;
+		
+		// Inutile de continuer s'il n'y a pas de notes
+		if (evaluationsReview.size() == 0)
+			return 0.0f;
+		
+		for (EvaluationReview er : evaluationsReview)
+			somme+= er.getNote();
+		return somme/(float)(evaluationsReview.size());
 	}
 }

@@ -34,7 +34,6 @@ public class EvaluationReview {
 		//===================== CONSTRUCTION DE L'EVALUATION DE REVIEW ===============================
 		this.member = member;
 		this.note = note;
-		
 	}
 
 	/**
@@ -47,18 +46,14 @@ public class EvaluationReview {
 	}	
 		
 		
-	public void modify(float note, Member member) throws BadEntry{
+	public void modify(float note) throws BadEntry{
 	
 		//=============================== ANALYSE DES CAS D'ERREURS ================================
-		// Si le membre n'est pas instancié
-		if (member == null)
-			throw new BadEntry ("Le membre doit être instancié.");
 		// Si la note n'est pas comprise entre 0 et 5
 		if (note<0.0f || note>5.0f)
 			throw new BadEntry("La note d'évaluation de la review doit être comprise entre 0.0 et 5.0 inclus.");
 	
 		//===================== CONSTRUCTION DE L'EVALUATION DE REVIEW ===============================
-		this.member = member;
 		this.note = note;
 	}
 	
