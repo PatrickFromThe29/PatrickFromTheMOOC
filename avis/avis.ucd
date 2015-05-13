@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" size="1354,747" id="avis" metadata="uml2-1.0" initialized="true" scrolledX="461" scrolledY="255" tag="1000" key="32303037303533312D313030302050726F6A65745F494E463131322F696E66">
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" size="1354,747" id="avis" metadata="uml2-1.0" initialized="true" tag="1000" key="32303037303533312D313030302050726F6A65745F494E463131322F696E66">
   <children xsi:type="editmodel:ClassEditModel" name="SocialNetwork" location="35,200" size="259,301" id="avis/SocialNetwork" runTimeClassModel="addItemFilm(Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;I),reviewItemBook(Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;FLjava.lang.String;),nbFilms(),nbBooks(),reviewOpinionItemBook(Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;F),consultItems(Ljava.lang.String;),toString(),nbMembers(),SocialNetwork(),addMember(Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;),reviewItemFilm(Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;FLjava.lang.String;),reviewOpinionItemFilm(Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;F),addItemBook(Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;Ljava.lang.String;I)">
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <children xsi:type="editmodel:CompartmentEditModel" size="236,252">
@@ -145,10 +145,10 @@
       <children xsi:type="editmodel:WireLabelEditModel" size="0,10" anchorKind="MiddlePart"/>
     </sourceConnections>
     <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="avis/EvaluationReview@evaluationsReview+avis/Review@review" source="//@children.5" target="//@children.6" targetEnd="//@children.5/@sourceConnections.2/@children.1" label="//@children.5/@sourceConnections.2/@children.2" sourceEnd="//@children.5/@sourceConnections.2/@children.0" connectionRouterKind="Manhattan">
-      <children xsi:type="editmodel:AssociationEndEditModel" name="review" location="174,0" id="avis/EvaluationReview@evaluationsReview+avis/Review@review|avis/Review#review" attachSource="true"/>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="evaluationsReview" location="0,147" id="avis/EvaluationReview@evaluationsReview+avis/Review@review|avis/EvaluationReview#evaluationsReview" multiplicityLabel="//@children.5/@sourceConnections.2/@children.1/@children.1" roleLabel="//@children.5/@sourceConnections.2/@children.1/@children.0" navigable="true" orderingKind="1">
-        <children xsi:type="editmodel:LabelEditModel" name=" - evaluationsReview" location="1087,325" size="76,10" anchorKind="LastPart"/>
-        <children xsi:type="editmodel:LabelEditModel" name="*" location="1160,349" size="3,10" anchorKind="LastPart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="review" location="184,10" id="avis/EvaluationReview@evaluationsReview+avis/Review@review|avis/Review#review" attachSource="true"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="evaluationsReview" location="10,157" id="avis/EvaluationReview@evaluationsReview+avis/Review@review|avis/EvaluationReview#evaluationsReview" multiplicityLabel="//@children.5/@sourceConnections.2/@children.1/@children.1" roleLabel="//@children.5/@sourceConnections.2/@children.1/@children.0" navigable="true" orderingKind="1">
+        <children xsi:type="editmodel:LabelEditModel" name=" - evaluationsReview" location="1187,359" size="76,10" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="*" location="1170,359" size="3,10" anchorKind="LastPart"/>
       </children>
       <children xsi:type="editmodel:WireLabelEditModel" size="0,10" anchorKind="MiddlePart"/>
     </sourceConnections>

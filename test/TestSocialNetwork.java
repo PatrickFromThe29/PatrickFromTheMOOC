@@ -40,6 +40,10 @@ public class TestSocialNetwork {
 	      
 	      System.out.println("\n\n ***************************************\n");
 	      
+	      TestReviewOpinionItemBook.main(resultats);
+	      
+	      System.out.println("\n\n ***************************************\n");
+	      
 	      // .... d'autres appels à des tests
 	      
 	      System.out.println("Bilan des Tests :   " + resultats[1] + 
