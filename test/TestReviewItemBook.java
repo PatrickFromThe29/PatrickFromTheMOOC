@@ -88,7 +88,7 @@ public class TestReviewItemBook {
 	
 	public static int addReviewNotMemberTest (SocialNetwork sn, String pseudo, String pwd, String titre, float note, String commentaire,  String idTest, String messErreur){
 		try {
-			sn.reviewItemBook (pseudo, pwd, titre, 5, "");
+			sn.reviewItemBook (pseudo, pwd, titre, note, commentaire);
 			System.out.println ("Test " + idTest + " : " + messErreur);
 			return 1;
 		}
