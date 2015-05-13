@@ -400,7 +400,7 @@ public class SocialNetwork {
 	
 		
 		
-	private void reviewOpinion(String pseudo, String password, String pseudoMembreDeposant, String titre, float note, ItemType itemType) throws BadEntry, NotItem, NotMember, Exception 
+	private void reviewOpinion(String pseudo, String password, String pseudoMembreDeposant, String titre, float note, ItemType itemType) throws BadEntry, NotItem, NotMember
 	{
 		//===================================== ANALYSE DES CAS D'ERREURS =======================================
 		//Si l'un des pseudos n'est pas instancié
@@ -408,7 +408,7 @@ public class SocialNetwork {
 			throw new BadEntry("L'un des pseudos n'est pas instancié.");
 		// Si les deux pseudos sont égaux (il est interdit à un membre de noter ses propres avis)
 		if (pseudo.trim().toUpperCase().equals(pseudoMembreDeposant.trim().toUpperCase()))
-			throw new BadEntry ("Vous n'êtes pas autorisé à noter vos propres avis.");
+			throw new NotMember ("Vous n'êtes pas autorisé à noter vos propres avis.");
 	
 		//========================================== TRAITEMENTS ============================================
 		// Rechercher le membre évaluateur et vérifier l'authentification

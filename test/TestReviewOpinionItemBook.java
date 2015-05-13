@@ -64,7 +64,7 @@ public class TestReviewOpinionItemBook {
 		}
 	}
 
-	public static int ReviewOpinionItemBookNotItem (SocialNetwork sn, String pseudo, String pwd, String pseudo2, String titre, float note , String idTest, String messErreur){
+	public static int ReviewOpinionItemBookNotItemTest (SocialNetwork sn, String pseudo, String pwd, String pseudo2, String titre, float note , String idTest, String messErreur){
 		try {
 			sn.reviewOpinionItemBook (pseudo, pwd, pseudo2, titre, note);
 			System.out.println ("Test " + idTest + " : " + messErreur);
@@ -134,7 +134,7 @@ public class TestReviewOpinionItemBook {
 			System.exit(1);
 		}
 		
-		nbMembers+=2;
+		nbMembers+=3;
 		nbBooks += 1;
 		
 		
@@ -143,7 +143,7 @@ public class TestReviewOpinionItemBook {
 		
 		// <=> fiche numéro 5
 		
-		// Exception BadEntry : tentatives BadEntryment incorrectes d'ajout de reviews de reviews de book
+		// Exception BadEntry : tentatives BadEntryment incorrectes d'ajout de notes de reviews de book
 		
 		nbTests++;;
 		nbErreurs += ReviewOpinionItemBookBadEntryTest(sn, null, "password", "Membre 2", "L'art de la guerre", 2.0f, "9.1", "L'ajout d'une note sur une review avec pseudo non instancié est accepté.");
@@ -186,17 +186,17 @@ public class TestReviewOpinionItemBook {
 		
 		// Exception NotItem : l'avis n'existe pas
 		nbTests++;
-		nbErreurs += ReviewOpinionItemBookNotItem(sn, "Membre 1", "password", "Membre 3", "L'art de la guerre",2.0f, "10.5", "Ajout d'une opinion sur une review inexistante acceptée.");
+		nbErreurs += ReviewOpinionItemBookNotItemTest(sn, "Membre 1", "password", "Membre 3", "L'art de la guerre",2.0f, "10.5", "Ajout d'une opinion sur une review inexistante acceptée.");
 
 		
 		
 		// Exception NotItem : le Book n'existe pas
 		nbTests++;
-		nbErreurs += ReviewOpinionItemBookNotItem(sn, "Membre 1", "password", "Membre 2", "L'art desdf la guerre",2.0f, "10.6", "Ajout d'une opinion accepté avec un titre incorrect.");
+		nbErreurs += ReviewOpinionItemBookNotItemTest(sn, "Membre 1", "password", "Membre 2", "L'art desdf la guerre",2.0f, "10.6", "Ajout d'une opinion accepté avec un titre incorrect.");
 		
 		//Exception NotMember : Un membre tente de s'évaluer lui même
 		nbTests++;
-		nbErreurs += ReviewOpinionItemBookNotItem(sn, "Membre 1", "password", "Membre 1", "L'art desdf la guerre",2.0f, "10.7", "Un membre a pu noter sa propre Review.");
+		nbErreurs += ReviewOpinionItemBookNotMemberTest(sn, "Membre 1", "password", "Membre 1", "L'art desdf la guerre",2.0f, "10.7", "Un membre a pu noter sa propre Review.");
 
 		nbTests++;
 		if (nbFilms != sn.nbFilms()){

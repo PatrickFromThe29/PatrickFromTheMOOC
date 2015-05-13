@@ -4,6 +4,7 @@ package avis;
 import java.util.LinkedList;
 
 import exception.BadEntry;
+import exception.NotItem;
 
 /**
  * La classe abstraite Item est la superclasse de tous les objets susceptibles d'être évalués sur ToutAvis. Elle possède toutes les méthodes en lien avec la gestion des reviews.
@@ -88,7 +89,7 @@ public abstract class Item {
 	 * @param memberEvaluateur Membre qui évalue une Review
 	 * @param note note à attribuer à la Review évaluée
 	 */
-	public void evaluateReview(Member memberDeposant, Member memberEvaluateur, float note)	throws BadEntry, Exception {
+	public void evaluateReview(Member memberDeposant, Member memberEvaluateur, float note)	throws BadEntry, NotItem {
 	
 		for(Review r : reviews)
 			if(r.membreIs(memberDeposant))
@@ -97,7 +98,7 @@ public abstract class Item {
 				memberDeposant.updateKarma(); // A chaque note déposée sur l'avis d'un membre, il faut actualiser le karma de celui-ci.
 				return;
 			}
-		throw new Exception("Le membre dont vous voulez évaluer l'avis n'a pas déposé d'avis sur l'Item courant");
+		throw new NotItem("Le membre dont vous voulez évaluer l'avis n'a pas déposé d'avis sur l'Item courant");
 	}	
 	
 	/**
