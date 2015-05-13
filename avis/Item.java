@@ -67,14 +67,19 @@ public abstract class Item {
 	 */
 	public float moyenneNoteReview(){
 		float somme = 0;
+		float karma = 0;
+		float sommeKarma = 0;
 		
 		if (reviews.size() == 0)
 			return 0.0f;
 					
 		for (Review review : reviews)
-			somme+=review.getNote();
-		
-		return (somme/(float)(reviews.size()));
+		{
+			karma = review.getMember().getKarma();
+			somme+=review.getNote()*karma;
+			sommeKarma+= karma;
+		}
+		return somme/sommeKarma;
 	}
 
 	

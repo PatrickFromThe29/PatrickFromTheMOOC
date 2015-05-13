@@ -34,10 +34,10 @@ public class Member{
 	 */
 	private float karma;
 
-	/**
+	/** 
 	 * Liste des Review déposées par le Member sur des Item du SocialNetwork
-	 * @uml.property  name="reviews"
-	 * @uml.associationEnd  multiplicity="(0 -1)" ordering="true" inverse="member:avis.Review"
+	 * @uml.property name="reviews"
+	 * @uml.associationEnd multiplicity="(0 -1)" ordering="true" inverse="member:avis.Review"
 	 */
 	private LinkedList<Review> reviews;
 	

@@ -13,7 +13,7 @@ public class Review {
 	/** 
 	 * Member qui a déposé la Review
 	 * @uml.property name="member"
-	 * @uml.associationEnd multiplicity="(1 1)" inverse="reviews:avis.Member"
+	 * @uml.associationEnd readOnly="true" multiplicity="(1 1)" inverse="reviews:avis.Member"
 	 */
 	private Member member = null;
 
@@ -152,12 +152,22 @@ public class Review {
 	public float getNote() {
 		return note;
 	}
+	
+	/**
+	 * Getter of the property <tt>member</tt>
+	 * @return  Returns the member.
+	 * @uml.property  name="member"
+	 */
+	public Member getMember() {
+		return member;
+	}
 		
 	/**
 	 * Calcule et renvoie la moyenne des notes formulées par les membres sur la Reviex courante
 	 * @return La moyenne des notes portant sur la Review courante
 	 */
-	public float moyenneEvaluationsReview(){
+	public float moyenneEvaluationsReview()
+	{
 		float somme = 0;
 		
 		// Inutile de continuer s'il n'y a pas de notes
@@ -167,5 +177,6 @@ public class Review {
 		for (EvaluationReview er : evaluationsReview)
 			somme+= er.getNote();
 		return somme/(float)(evaluationsReview.size());
+	
 	}
 }
