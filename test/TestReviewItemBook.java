@@ -52,13 +52,13 @@ public class TestReviewItemBook {
 
 	public static int addReviewOKTest (SocialNetwork sn, String pseudo, String pwd, String titre, float note, String commentaire, String idTest, float moyenneAttendue){
 		
-		
+		float temp = 0;
 		try{
-			if (sn.reviewItemBook (pseudo, pwd, titre, note, commentaire) == moyenneAttendue)
+			if ((temp = sn.reviewItemBook (pseudo, pwd, titre, note, commentaire)) == moyenneAttendue)
 				return 0;
 			else {
 				
-				System.out.println("Moyenne incorrecte (différence entre moyenne attendue et moyenne réelle).");
+				System.out.println("Moyenne incorrecte (différence entre moyenne attendue et moyenne réelle)." + moyenneAttendue +" reelle : " +  temp);
 				return 1;
 			}
 			}
@@ -124,6 +124,7 @@ public class TestReviewItemBook {
 		{
 			sn.addMember("Membre 1", "password", "");
 			sn.addMember("Membre 2", "password", "");
+			sn.addMember("Membre 3", "password", "");
 			sn.addItemBook ("Membre 1", "password", "L'art de la guerre", "Traité de Stratégie militaire", "Sun Tzu", 338);
 			sn.addItemBook ( "Membre 1", "password", "Les traites négrières","Essai philosophique", "Olivier Pétré-grenouilleau", 480);
 			sn.addItemBook ("Membre 1", "password", "Essai sur les données imédiates de la conscience", "Texte Philosophique", "Henri Bergson", 120);
@@ -135,7 +136,7 @@ public class TestReviewItemBook {
 			System.exit(1);
 		}
 		
-		nbMembers+=2;
+		nbMembers+=3;
 		nbBooks += 3;
 		
 		
@@ -172,9 +173,22 @@ public class TestReviewItemBook {
 		nbTests++;
 		nbErreurs += addReviewOKTest (sn, "Membre 1", "password", "L'art de la guerre",2.0f, "review 1", "6.1a", 2.0f);
 		nbTests++;
-		nbErreurs += addReviewOKTest (sn, "Membre 2", "password", "L'art de la guerre",3.0f, "review 1", "6.1b", 2.5f);
+		nbErreurs += addReviewOKTest (sn, "Membre 1", "password", "Les traites négrières",2.0f, "review 1", "6.1b", 2.0f);
+		try{
+		sn.reviewOpinionItemBook("Membre 2", "password", "Membre 1", "L'art de la guerre", 5f);
+
+		}
+		catch(Exception E)
+		{
+			System.out.println("Ajout de la note de review : échec"+E);
+		}
+		/* TODO : Ajout d'un autre book, d'une autre review par membre 1, pas de note sur cette review */
+		
+		// On vérifie que la moyenne renvoyée par addReviewItemBook correspond à celle qu'on attend, en prenant en compte le Karma (correspond au calcul scabreux passé en dernier paramètre)
 		nbTests++;
-		nbErreurs += addReviewOKTest (sn, "Membre 1", "password","L'art de la guerre",4.0f, "review 1", "6.2", 3.5f);
+		nbErreurs += addReviewOKTest (sn, "Membre 2", "password", "L'art de la guerre",3.0f, "review 1", "6.1c",(3.75f * 2.0f + 3.0f * 2.5f)/(3.75f + 2.5f) );
+		nbTests++;
+		nbErreurs += addReviewOKTest (sn, "Membre 1", "password","L'art de la guerre",4.0f, "review 1", "6.2", (3.75f * 4.0f + 3.0f * 2.5f)/(3.75f + 2.5f));
 
 		//Exception NotMember : comportement en cas d'erreur d'authentification
 		nbTests++;

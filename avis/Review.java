@@ -168,11 +168,11 @@ public class Review {
 	 */
 	public float moyenneEvaluationsReview()
 	{
-		float somme = 0;
+		float somme = 0f;
 		
 		// Inutile de continuer s'il n'y a pas de notes
 		if (evaluationsReview.size() == 0)
-			return 0.0f;
+			return -1f;
 		
 		for (EvaluationReview er : evaluationsReview)
 			somme+= er.getNote();

@@ -10,6 +10,11 @@ import exception.BadEntry;
  *
  */
 public class Member{
+	/**
+	 * Valeur attribuée initialement au karma de chaque Member
+	 * @uml.property  name="VALEURINITIALEKARMA" readOnly="true"
+	 */
+	private static final float valeurinitialekarma = 2.5f;
 
 	/**
 	 * pseudo du Member
@@ -30,6 +35,9 @@ public class Member{
 	private String profil;
 	
 	/**
+	 * Le karma est initialisé à 2.5. Il est mis à jour à chaque notation d'une review émise par le membre courant.
+	 * A chaque mise a jour, on moyenne les note de chaque review du membre, on les moyenne en prenant en compte la valeur initiale 2.5 (considérée de la même façon qu'une moyenne de note de review)
+	 * La prise en compte de la valeur de 2.5 est justifiée par le problème d'une première évaluation de review à 0, qui ferait tomber le karma à 0 si l'on ne le faisait pas.
 	 * @uml.property  name="karma" readOnly="true"
 	 */
 	private float karma;
@@ -73,7 +81,7 @@ public class Member{
 		this.password= password.trim();
 		this.profil = profil;
 		this.reviews = new LinkedList<Review>();
-		this.karma = 2.5f; // on attribue un karma moyen à un nouvel utilisateur
+		this.karma = valeurinitialekarma; // on attribue un karma moyen à un nouvel utilisateur
 	}
 	
 	/**
@@ -183,9 +191,18 @@ public class Member{
 	 * Il est actualisé à chaque notation d'une Review par un membre
 	 */
 	public void updateKarma(){
-		float somme = 0;
+		float somme = valeurinitialekarma;
+		float tampon = 0f;
+		int compteur = 0;
 		for (Review review : reviews)
-			somme = review.moyenneEvaluationsReview();
-		this.karma = somme/(float)(reviews.size());	
+			if ((tampon=review.moyenneEvaluationsReview())>=0)
+				somme += tampon ;
+			else
+				compteur++;
+		
+		this.karma = somme/(float)(reviews.size() + 1 - compteur);	
 	}
+
+
+
 }

@@ -12,6 +12,10 @@ public class TestSocialNetwork {
 
 	      String [] resultats = new String[] {"0", "0"};
 	      
+	      TestNetiquette.main(resultats);
+	      
+	      System.out.println("\n\n ***************************************\n");
+	      
 	      TestsInitialisation.main(resultats);
 	      
 	      System.out.println("\n\n ***************************************\n");

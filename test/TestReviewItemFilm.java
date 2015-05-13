@@ -165,14 +165,24 @@ public class TestReviewItemFilm {
 		
 		// <=> fiche numéro 6
 
-		// Ajout de 3 reviews avec entrées "correctes". Le test prend en compte la moyenne retournée par reviewItemFilm.
+		// Ajout de 3 reviews avec entrées "correctes". Le test prend en compte la moyenne retournée par reviewItemFilm, en prenant en compte le karma.
 		// On vérifie que l'on peut modifier un avis sur un film ou en ajouter un.
 		nbTests++;
 		nbErreurs += addReviewOKTest (sn, "Membre 1", "password", "La grande vadrouille",2.0f, "review 1", "6.1a", 2.0f);
 		nbTests++;
-		nbErreurs += addReviewOKTest (sn, "Membre 2", "password", "La grande vadrouille",3.0f, "review 1", "6.1b", 2.5f);
+		nbErreurs += addReviewOKTest (sn, "Membre 1", "password", "Oblivion",2.0f, "review 1", "6.1b", 2.0f);
+		try{
+			sn.reviewOpinionItemFilm("Membre 2", "password", "Membre 1", "La grande vadrouille", 5f);
+
+			}
+			catch(Exception E)
+			{
+				System.out.println("Ajout de la note de review : échec"+E);
+			}
 		nbTests++;
-		nbErreurs += addReviewOKTest (sn, "Membre 1", "password","La grande vadrouille",4.0f, "review 1", "6.2", 3.5f);
+		nbErreurs += addReviewOKTest (sn, "Membre 2", "password", "La grande vadrouille",3.0f, "review 1", "6.1c",(3.75f * 2.0f + 3.0f * 2.5f)/(3.75f + 2.5f));
+		nbTests++;
+		nbErreurs += addReviewOKTest (sn, "Membre 1", "password","La grande vadrouille",4.0f, "review 1", "6.2",(3.75f * 4.0f + 3.0f * 2.5f)/(3.75f + 2.5f));
 
 		//Exception NotMember : comportement en cas d'erreur d'authentification
 		nbTests++;
