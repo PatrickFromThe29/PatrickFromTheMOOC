@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import exception.BadEntry;
 
 /**
- * Représente un membre du réseau social
+ * Représente un membre du SocialNetwork
  * @author Yann Andreu et Yannick Omnès
  *
  */
@@ -35,8 +35,8 @@ public class Member{
 	private String profil;
 	
 	/**
-	 * Le karma est initialisé à 2.5. Il est mis à jour à chaque notation d'une review émise par le membre courant.
-	 * A chaque mise a jour, on moyenne les note de chaque review du membre, on les moyenne en prenant en compte la valeur initiale 2.5 (considérée de la même façon qu'une moyenne de note de review)
+	 * Le karma est initialisé à 2.5. Il est mis à jour à chaque notation d'une review émise par le Member courant.
+	 * A chaque mise à jour, on moyenne les notes de chaque review du Member, on les moyenne en prenant en compte la valeur initiale 2.5 (considérée de la même façon qu'une moyenne de note de Review)
 	 * La prise en compte de la valeur de 2.5 est justifiée par le problème d'une première évaluation de review à 0, qui ferait tomber le karma à 0 si l'on ne le faisait pas.
 	 * @uml.property  name="karma" readOnly="true"
 	 */
@@ -85,8 +85,8 @@ public class Member{
 	}
 	
 	/**
-	 * Getter of the property <tt>karma</tt>
-	 * @return  Returns the karma.
+	 * Retourne la valeur de l'attribut <tt>karma</tt>
+	 * @return  renvoie le karma.
 	 * @uml.property  name="karma"
 	 */
 	public float getKarma() {
@@ -99,7 +99,8 @@ public class Member{
 	 * @param pseudo pseudo à comparer à celui du Member courant
 	 * @throws BadEntry
 	 * <ul>
-	 *  <li>  si le pseudo n'est pas instancié ou a moins de 1 caractère autre que des espaces.</li>
+	 *  <li> si le pseudo n'est pas instancié </li>
+	 *  <li> si le pseudo a moins de 1 caractère autre que des espaces.</li>
 	 * </ul>   
 	 * @return true si le pseudo passé en paramètre correspond à celui du Member courant, false sinon
 	 */
@@ -122,7 +123,8 @@ public class Member{
 	 * Détermine si le mot de passe passé en paramètre correspond à celui du Member courant
 	 * @param password le mot de passe à comparer à celui du Member courant
 	 * @throws BadEntry <ul>
-	 *  <li>  si le password n'est pas instancié ou a moins de 4 caractères autres que des leadings or trailing blanks. </li>
+	 *  <li> Si le password n'est pas instancié </li>
+	 *  <li> Si le password a moins de 4 caractères autres que des leadings or trailing blanks. </li>
 	 *  </ul>
 	 */
 	private boolean passwordIs(String password)	throws BadEntry 

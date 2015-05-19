@@ -14,13 +14,13 @@ import exception.NotItem;
 public abstract class Item {
 
 	/** 
-	 * titre de l'Item
+	 * Titre de l'Item
 	 * @uml.property name="titre"
 	 */
 	protected String titre;
 	
 	/**
-	 * Liste des reviews associées à l'item courant
+	 * Liste des reviews associées à l'Item courant
 	 * @uml.property   name="reviews"
 	 * @uml.associationEnd   multiplicity="(0 -1)" ordering="true" inverse="item:avis.Review"
 	 */
@@ -28,7 +28,7 @@ public abstract class Item {
 
 	
 	/**
-	 * Construit un item.
+	 * Construit un Item.
 	 */
 	public Item(){
 		reviews = new LinkedList<Review>();
@@ -63,7 +63,7 @@ public abstract class Item {
 		
 	
 	/**
-	 * Calcule la moyenne des notes comprises dans les reviews associées à l'item courant
+	 * Calcule la moyenne des notes comprises dans les reviews associées à l'item courant en tenant compte des karma des Member
 	 * @return la note moyenne des reviews formulées sur l'item courant
 	 */
 	public float moyenneNoteReview(){
@@ -88,6 +88,7 @@ public abstract class Item {
 	 * Evalue une des Review rattachée à l'Item courant en la sélectionnant par le Member qui l'a déposée
 	 * @param memberEvaluateur Membre qui évalue une Review
 	 * @param note note à attribuer à la Review évaluée
+	 * @throws NotItem si le Member dont on veut évaluer la Review n'en a pas déposé sur l'Item courant 
 	 */
 	public void evaluateReview(Member memberDeposant, Member memberEvaluateur, float note)	throws BadEntry, NotItem {
 	

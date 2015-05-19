@@ -10,33 +10,33 @@ import exception.BadEntry;
 public class Film extends Item {
 
 	/**
-	 * genre du film
+	 * Genre du Film
 	 * @uml.property  name="genre"
 	 */
 	private String genre;	
 	/**
-	 * realisateur du film
+	 * Réalisateur du Film
 	 * @uml.property  name="realisateur"
 	 */
 	private String realisateur;
 	/**
-	 * scenariste du film
+	 * Scénariste du Film
 	 * @uml.property  name="scenariste"
 	 */
 	private String scenariste;	
 	/**
-	 * durée du film
+	 * Durée du Film
 	 * @uml.property  name="duree"
 	 */
 	private int duree;
 	
 	/**
 	 * Construit un nouveau Film
-	 * @param titre le titre du film
-	 * @param genre le genre du film
-	 * @param realisateur le réalisateur du film
-	 * @param scenariste le scenariste du film
-	 * @param duree la durée du film
+	 * @param titre le titre du Film
+	 * @param genre le genre du Film
+	 * @param realisateur le réalisateur du Film
+	 * @param scenariste le scenariste du Film
+	 * @param duree la durée du Film
 	 * @throws BadEntry
 	 * <ul>
 	 *  <li>  si le titre n'est pas instancié ou a moins de 1 caractère autre que des espaces .  </li>

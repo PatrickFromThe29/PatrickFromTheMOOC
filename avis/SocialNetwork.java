@@ -432,7 +432,10 @@ public class SocialNetwork {
 	
 	
 	/**
-	 * @throws BadEntry
+	 * 
+	 * @param pseudo le pseudo du Member recherché
+	 * @return le Member dont le pseudo correspond à celui passé en paramètre, ou null s'il n'existe pas
+	 * @throws BadEntry si le format du pseudo n'est pas correct
 	 */
 	private Member findMemberByPseudo(String pseudo) throws BadEntry
 	{
@@ -444,6 +447,11 @@ public class SocialNetwork {
 
 			
 	/**
+	 * 
+	 * @param titre le titre de l'Item à rechercher
+	 * @param itemType type de l'Item à rechercher. Les types d'Item disponibles sont énumérés dans ItemType
+	 * @return l'Item correspondant au titre et au type passés en paramètre, ou null à défaut.
+	 * @throws BadEntry si le format du titre est incorrect
 	 */
 	private Item findItemByName(String titre, ItemType itemType) throws BadEntry
 	{
@@ -501,5 +509,4 @@ public class SocialNetwork {
 		return s;
 
 	}
-
 }

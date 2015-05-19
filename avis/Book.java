@@ -5,36 +5,37 @@ import exception.BadEntry;
 /**
  * Représente un livre
  * @author Yann Andreu et Yannick Omnès
- *
  */
 public class Book extends Item {
 	
 	/**
-	 * genre du livre
+	 * Genre du Book
 	 * @uml.property  name="genre"
 	 */
 	private String genre;
+	
 	/**
-	 * auteur du livre
+	 * Auteur du Book
 	 * @uml.property  name="auteur"
 	 */
 	private String auteur;	
+	
 	/**
-	 * nombre de pages du livre
+	 * Nombre de pages du Book
 	 * @uml.property  name="nbPages"
 	 */
 	private int nbPages;
 	
 	
 	/**
-	 * Construit un livre
-	 * @param titre titre du livre à créer
-	 * @param genre genre du livre à créer
-	 * @param auteur auteur du livre à créer
-	 * @param nbPages nombre de pages du livre à créer
+	 * Construit un Book
+	 * @param titre Titre du Book à créer
+	 * @param genre Genre du Book à créer
+	 * @param auteur Auteur du Book à créer
+	 * @param nbPages Nombre de pages du Book à créer
 	 * @throws BadEntry 
 	 * <ul>
-	 *  <li>  si le titre n'est pas instancié ou a moins de 1 caractère autre que des espaces .  </li>
+	 *  <li>  si le Book n'est pas instancié ou a moins de 1 caractère autre que des espaces .  </li>
 	 *  <li>  si le genre et/ou l'auteur n'est (ne sont pas) instancié(s). </li>
 	 *  <li>  si le nombre de pages n'est pas positif.  </li>
 	 * </ul>    
@@ -73,7 +74,7 @@ public class Book extends Item {
 		s+= "Auteur : " + this.auteur + "\n";
 		s+= "Nombre de pages : " + this.nbPages + "\n";
 		//s+= "Note moyenne : " + this.moyenneNotesReview() + "/5 \n";
-		s+= super.toString();// On appelle la méthode toString() de Item pour inclure l'ensemble des reviews (la liste étant private)
+		s+= super.toString();// On appelle la méthode toString() de Item pour inclure l'ensemble des reviews (la listede Review étant private dans Item)
 		return s;	
 	}
 				
