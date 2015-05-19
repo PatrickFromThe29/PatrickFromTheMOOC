@@ -55,6 +55,19 @@ public class TestAddItemFilm {
 		}
 	}
 
+	/**
+	 * Vérifie que l'ajout d'un Film avec des paramètres corrects se passe comme prévu. Dans le cas contraire, affiche l'exception qui s'est déclenchée.
+	 * @param sn SocialNetwork avec lequel on travaille
+	 * @param pseudo pseudo du Member 
+	 * @param pwd password du Member
+	 * @param titre titre du Film
+	 * @param genre genre du Film
+	 * @param realisateur réalisateur du Film
+	 * @param scenariste scénariste du Film
+	 * @param duree durée du Film
+	 * @param idTest id du test
+	 * @return 0 si le test s'est bien passé, 1 sinon
+	 */
 	public static int addFilmOKTest (SocialNetwork sn, String pseudo, String pwd, String titre, String genre, String realisateur, String scenariste, int duree, String idTest){
 		int nbFilms = sn.nbFilms();
 		try{
@@ -73,6 +86,20 @@ public class TestAddItemFilm {
 		}
 	}
 
+	/**
+	 * Vérifie la levée de l'exception ItemFilmAlreadyExists dans le cas où on essaie d'ajouter un Film dont le titre est déjà celui d'un autre Film du SocialNetwork
+	 * @param sn SocialNetwork avec lequel on travaille
+	 * @param pseudo pseudo du Member 
+	 * @param pwd password du Member
+	 * @param titre titre du Film
+	 * @param genre genre du Film
+	 * @param realisateur réalisateur du Film
+	 * @param scenariste scénariste du Film
+	 * @param duree durée du Film
+	 * @param idTest id du test
+	 * @param messErreur message d'erreur à renvoyer si l'ajout est autorisé
+	 * @return 0 si le test s'est bien passé, 1 sinon
+	 */
 	public static int addFilmAlreadyExistsTest (SocialNetwork sn, String pseudo, String pwd, String titre, String genre, String realisateur, String scenariste, int duree,  String idTest, String messErreur){
 		int nbFilms = sn.nbFilms();
 		try {
@@ -97,6 +124,20 @@ public class TestAddItemFilm {
 		}
 	}
 	
+	/**
+	 * Vérifie la levée de l'exception NotMember si on tente d'ajouter un Film avec des informations d'identification du Member incorrectes.
+	 * @param sn SocialNetwork avec lequel on travaille
+	 * @param pseudo pseudo du Member 
+	 * @param pwd password du Member
+	 * @param titre titre du Film
+	 * @param genre genre du Film
+	 * @param realisateur réalisateur du Film
+	 * @param scenariste scénariste du Film
+	 * @param duree durée du Film
+	 * @param idTest id du test
+	 * @param messErreur message d'erreur à renvoyer si l'ajout est autorisé
+	 * @return 0 si le test s'est bien passé, 1 sinon
+	 */
 	public static int addFilmNotMemberTest (SocialNetwork sn, String pseudo, String pwd, String titre, String genre, String realisateur, String scenariste, int duree,  String idTest, String messErreur){
 		int nbFilms = sn.nbFilms();
 		try {
@@ -123,7 +164,10 @@ public class TestAddItemFilm {
 
 
 
-
+	/**
+	 * main d'implémentation de la stratégie de test de AddItemFilm conformément aux fiches de test établies
+	 * @param args tableau permettant de remonter au main de test global de SocialNetwork le nombre de tests effectués et le nombre d'échecs constatés
+	 */
 	public static void main(String[] args) {
 
 		//================================= Déclarations =======================================
