@@ -12,10 +12,6 @@ public class TestSocialNetwork {
 
 	      String [] resultats = new String[] {"0", "0"};
 	      
-	      TestNetiquette.main(resultats);
-	      
-	      System.out.println("\n\n ***************************************\n");
-	      
 	      TestsInitialisation.main(resultats);
 	      
 	      System.out.println("\n\n ***************************************\n");
@@ -41,6 +37,14 @@ public class TestSocialNetwork {
 	      System.out.println("\n\n ***************************************\n");
 	      
 	      TestConsultItem.main(resultats);
+	      
+	      System.out.println("\n\n ***************************************\n");
+	      
+	      TestReviewOpinionItemFilm.main(resultats);
+	      
+	      System.out.println("\n\n ***************************************\n");
+	      
+	      TestReviewOpinionItemBook.main(resultats);
 	      
 	      System.out.println("\n\n ***************************************\n");
 	      
