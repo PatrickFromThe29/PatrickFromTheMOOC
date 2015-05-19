@@ -7,6 +7,7 @@ import exception.ItemFilmAlreadyExists;
 import exception.NotMember;
 
 /** 
+ * Test de AddItemFilm
  * @author Yannick Omnès et Yann Andreu
  * @date mars 2015
  * @version V1.0
@@ -16,17 +17,17 @@ public class TestAddItemFilm {
 
 
 	/**
-	 * vérifie que l'ajout d'un film est refusé en cas de mauvaise saisie des paramètres (levée de l'exception BadEntry)
+	 * Vérifie que l'ajout d'un film est refusé en cas de mauvaise saisie des paramètres (levée de l'exception BadEntry)
 	 * Si c'est bien le cas, ne fait rien
 	 * Sinon, affiche le message d'erreur passé en paramètre
 	 * @param sn SocialNetwork avec lequel on travaille
-	 * @param pseudo pseudo du membre 
-	 * @param pwd password du membre
-	 * @param titre titre du film
-	 * @param genre genre du film
-	 * @param realisateur réalisateur du film
-	 * @param scenariste scénariste du film
-	 * @param duree durée du film
+	 * @param pseudo pseudo du Member 
+	 * @param pwd password du Member
+	 * @param titre titre du Film
+	 * @param genre genre du Film
+	 * @param realisateur réalisateur du Film
+	 * @param scenariste scénariste du Film
+	 * @param duree durée du Film
 	 * @param idTest id du test
 	 * @param messErreur message d'erreur à renvoyer si l'ajout est autorisé
 	 * @return 0 si le test s'est bien passé, 1 sinon

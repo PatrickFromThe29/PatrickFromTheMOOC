@@ -7,6 +7,7 @@ import exception.ItemBookAlreadyExists;
 import exception.NotMember;
 
 /** 
+ * Test de AddItemBook
  * @author Yannick Omnès et Yann Andreu
  * @date mars 2015
  * @version V1.0
@@ -53,6 +54,18 @@ public class TestAddItemBook {
 		}
 	}
 
+	/**
+	 * Vérifie que l'ajout d'un Book avec des paramètres corrects se déroule bien
+	 * @param sn SocialNetwork avec lequel on travaille
+	 * @param pseudo pseudo du membre 
+	 * @param pwd password du membre
+	 * @param titre titre du Book
+	 * @param genre genre du Book
+	 * @param auteur auteur du Book
+	 * @param nbPages nombre de pages du Book
+	 * @param idTest id du test
+	 * @return  0 si le test s'est bien passé, 1 sinon
+	 */
 	public static int addBookOKTest (SocialNetwork sn, String pseudo, String pwd, String titre, String genre, String auteur, int nbPages, String idTest){
 		int nbBooks = sn.nbBooks();
 		try{
@@ -71,6 +84,19 @@ public class TestAddItemBook {
 		}
 	}
 
+	/**
+	 * Vérifie que l'exception ItemBookAlreadyExists est bien levée si on tente d'ajouter un Book de même titre qu'un qui existe déjà
+	 * @param sn SocialNetwork avec lequel on travaille
+	 * @param pseudo pseudo du membre 
+	 * @param pwd password du membre
+	 * @param titre titre du Book
+	 * @param genre genre du Book
+	 * @param auteur auteur du Book
+	 * @param nbPages nombre de pages du Book
+	 * @param idTest id du test
+	 * @param messErreur message d'erreur à  renvoyer si l'ajout est autorisé
+	 * @return 0 si le test s'est bien passé, 1 sinon
+	 */
 	public static int addBookAlreadyExistsTest (SocialNetwork sn, String pseudo, String pwd, String titre, String genre, String auteur, int nbPages,  String idTest, String messErreur){
 		int nbBooks = sn.nbBooks();
 		try {
@@ -95,6 +121,19 @@ public class TestAddItemBook {
 		}
 	}
 	
+	/**
+	 * Vérifie que l'exception NotMember est bien levée si on essaie d'ajouter un Book avec un pseudo qui n'existe pas
+	 * @param sn SocialNetwork avec lequel on travaille
+	 * @param pseudo pseudo du membre 
+	 * @param pwd password du membre
+	 * @param titre titre du Book
+	 * @param genre genre du Book
+	 * @param auteur auteur du Book
+	 * @param nbPages nombre de pages du Book
+	 * @param idTest id du test
+	 * @param messErreur message d'erreur à  renvoyer si l'ajout est autorisé
+	 * @return 0 si le test s'est bien passé, 1 sinon
+	 */
 	public static int addBookNotMemberTest (SocialNetwork sn, String pseudo, String pwd, String titre, String genre, String auteur, int nbPages,  String idTest, String messErreur){
 		int nbBooks = sn.nbBooks();
 		try {
@@ -121,7 +160,10 @@ public class TestAddItemBook {
 
 
 
-
+	/**
+	 * main du test : implémentation de la stratégie de test de AddItemBook conformément aux fiches de test correspondantes.
+	 * @param args tableau qui comporte le nombre de tests total et le nombre d'échecs. Il est passé à l'ensemble des tests successifs lancés dans TestSocialNetwork pour faciliter l'établissement du bilan
+	 */
 	public static void main(String[] args) {
 
 		//================================= Déclarations =======================================
