@@ -4,6 +4,14 @@ import java.lang.System;
 
 import avis.SocialNetwork;
 
+/**
+ * Le but de ce test est de mesurer la complexité de nos algorithmes en matière d'ajout de Member, Film et Book.
+ * Pour cela, on crée un SN dans lequel on instancié 2500 objets de chacun de ces types en mesurant les temps, puis 
+ * on reproduit la même opération avec 5000 objets. On peut ainsi constater, sur un échantillon représentatif, l'évolution du temps nécessaire à l'accomplissement des opérations. 
+ * @author Yann Andreu
+ * @author Yannick Omnès
+ *
+ */
 public class TestComplexite {
 
 	

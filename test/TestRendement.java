@@ -4,8 +4,19 @@ import java.lang.System;
 
 import avis.SocialNetwork;
 
+/**
+ * Test d'évaluation du rendement de l'application : on vérifie qu'il est bien possible d'ajouter 
+ * 500 membres et 5000 items.
+ * En supplément, on vérifie que l'ajout de 500 Review à un film est possible et qu'il est possible d'en modifier une dans le temps imparti (2s pour une opération)
+ * @author Yann Andreu et Yannick Omnès
+ *
+ */
 public class TestRendement 
 {
+	/**
+	 * main du test de rendement
+	 * @param args
+	 */
 	public static void main (String args[])
 	{
 		SocialNetwork sn = new SocialNetwork();

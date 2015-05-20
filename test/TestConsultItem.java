@@ -5,8 +5,22 @@ import java.util.LinkedList;
 import avis.SocialNetwork;
 import exception.BadEntry;
 
+/**
+ * Test de la méthode publique ConsultItem de la classe SocialNetwork.
+ * @author Yann Andreu
+ * @author Yannick Omnès
+ *
+ */
 public class TestConsultItem {
 
+	/**
+	 * Vérifie la levée de l'exception BadEntry lorsque les paramètres passés à consultItem ne sont pas corrects
+	 * @param sn SocialNetwork dans lequel on effectue le test
+	 * @param nom nom de l'Item à rechercher
+	 * @param idTest Identifiant du test pour pouvoir s'y référer plus aisément
+	 * @param messErreur message à afficher en cas d'échec du test
+	 * @return 0 si le test s'est bien passé, 1 sinon
+	 */
 	public static int consultItemBadEntryTest (SocialNetwork sn, String nom, String idTest, String messErreur){
 
 		try {
@@ -24,6 +38,14 @@ public class TestConsultItem {
 		}
 	}
 	
+	/**
+	 * Vérifie le bon fonctionnement de consultItem avec des paramètres corrects
+	 * @param sn SocialNetwork auquel appliquer le test
+	 * @param nom nom de l'Item à rechercher
+	 * @param resultatAttendu taille (en nombre d'éléments) de la liste de String 
+	 * @param idTest Identifiant unique du test pour référence
+	 * @return 0 si le test s'est bien passé, 1 sinon
+	 */
 	public static int consultItemOkTest(SocialNetwork sn, String nom, int resultatAttendu, String idTest){
 		LinkedList<String> result;
 		try{
@@ -43,9 +65,13 @@ public class TestConsultItem {
 		}
 	}
 	
-
+	/**
+	 * main de test pour consultItem
+	 * @param args tableau permettant de remonter le nombre d'échecs sur le nombre de tests tentés
+	 */
 	public static void main(String[] args) {
-SocialNetwork sn = new SocialNetwork();
+		
+		SocialNetwork sn = new SocialNetwork();
 		
 		int nbTests = 0;
 		int nbErreurs = 0;
