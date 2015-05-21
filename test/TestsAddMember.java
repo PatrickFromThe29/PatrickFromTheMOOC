@@ -15,7 +15,16 @@ import exception.MemberAlreadyExists;
 public class TestsAddMember {
 
 
-
+	/**
+	 * Vérifie la levée de l'exception BadEntry lorsque addMember() est employée avec des paramètres incorrects
+	 * @param sn SocialNetwork sur lequel on travaille
+	 * @param pseudo pseudo du Member à ajouter
+	 * @param pwd password du Member à ajouter
+	 * @param profil profil du Member à ajouter
+	 * @param idTest identifiant unique du test
+	 * @param messErreur message d'erreur à afficher si le test ne s'est pas déroulé correctement
+	 * @return 1 si erreur détectée, 0 sinon
+	 */
 	public static int addMemberBadEntryTest (SocialNetwork sn, String pseudo, String pwd, String profil, String idTest, String messErreur){
 		// vérifie que l'ajout d'un membre (pseudo, pwd, profil) est refusée (levée de l'exception BadEntry et  pas de modification du sn)
 		// si c'est bien le cas, ne fait rien
@@ -41,6 +50,15 @@ public class TestsAddMember {
 		}
 	}
 
+	/**
+	 * Vérifie que le Member est correctement ajouté si tous les paramètres sont corrects
+	 * @param sn SocialNetwork sur lequel on travaille
+	 * @param pseudo pseudo du Member à ajouter
+	 * @param pwd password du Member à ajouter
+	 * @param profil profil du Member à ajouter
+	 * @param idTest identifiant unique du test
+	 * @return 1 si erreur détectée, 0 sinon
+	 */
 	public static int addMemberOKTest (SocialNetwork sn, String pseudo, String pwd, String profil, String idTest){
 		int nbMembres = sn.nbMembers();
 		try{
@@ -59,6 +77,16 @@ public class TestsAddMember {
 		}
 	}
 
+	/**
+	 * Vérifie que l'exception MemberAlreadyExists est bien levée dans les cas prévus
+	 * @param sn SocialNetwork sur lequel on travaille
+	 * @param pseudo pseudo du Member à ajouter
+	 * @param pwd password du Member à ajouter
+	 * @param profil profil du Member à ajouter
+	 * @param idTest identifiant unique du test
+	 * @param messErreur message d'erreur à afficher si le test échoue
+	 * @return 1 si erreur détectée, 0 sinon
+	 */
 	public static int addMemberAlreadyExistsTest (SocialNetwork sn, String pseudo, String pwd, String profil, String idTest, String messErreur){
 		int nbMembres = sn.nbMembers();
 		try {
@@ -83,7 +111,10 @@ public class TestsAddMember {
 
 
 
-
+	/**
+	 * main de test de la fonction AddMember()
+	 * @param args tableau permettant de remonter au test global le nombre d'échecs de tests et le nombre de tests tentés
+	 */
 	public static void main(String[] args) {
 
 		int nbLivres = 0;

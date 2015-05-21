@@ -36,7 +36,7 @@ public class Member{
 	
 	/**
 	 * Le karma est initialisé à 2.5. Il est mis à jour à chaque notation d'une review émise par le Member courant.
-	 * A chaque mise à jour, on moyenne les notes de chaque review du Member, on les moyenne en prenant en compte la valeur initiale 2.5 (considérée de la même façon qu'une moyenne de note de Review)
+	 * A chaque mise à jour, on moyenne les notes de chaque review du Member. On moyenne ensuite les moyennes de chaque Review en prenant en compte la valeur initiale 2.5 (considérée de la même façon qu'une moyenne de note de Review)
 	 * La prise en compte de la valeur de 2.5 est justifiée par le problème d'une première évaluation de review à 0, qui ferait tomber le karma à 0 si l'on ne le faisait pas.
 	 * @uml.property  name="karma" readOnly="true"
 	 */

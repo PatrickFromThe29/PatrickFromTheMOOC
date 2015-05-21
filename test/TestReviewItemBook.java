@@ -9,11 +9,12 @@ import exception.NotItem;
 import exception.NotMember;
 
 /** 
+ * Test de la méthode reviewItemBook
+ * Mis à jour : prend en compte le karma et permet ainsi de tester le lot2 en même temps
  * @author Yannick Omnès et Yann Andreu
  * @date mars 2015
- * @version V1.0
+ * @version V2.0
  */
-
 public class TestReviewItemBook {
 
 
@@ -50,6 +51,19 @@ public class TestReviewItemBook {
 		}
 	}
 
+	/**
+	 * Vérifie que l'ajout d'une Review sur un Book fonctionne bien avec des paramètres corrects.
+	 * Prend en compte la moyenne attendue et la compare à celle renvoyée par reviewItemBook() pour établir le résultat du test.
+	 * @param sn Le Social Network
+	 * @param pseudo le pseudo du membre
+	 * @param pwd le password du membre
+	 * @param titre le titre du Book
+	 * @param note la note attribuée
+	 * @param commentaire le commentaire rédigé
+	 * @param idTest l'identifiant unique caractérisant le test courant
+	 * @param moyenneAttendue moyenne que devrait retourner reviewItemFilm si elle fonctionne bien
+	 * @return 1 si erreur détectée, 0 sinon
+	 */
 	public static int addReviewOKTest (SocialNetwork sn, String pseudo, String pwd, String titre, float note, String commentaire, String idTest, float moyenneAttendue){
 		
 		float temp = 0;
@@ -69,6 +83,18 @@ public class TestReviewItemBook {
 		}
 	}
 
+	/**
+	 * Vérifie la levée de l'exception NotItem
+	 * @param sn Le Social Network
+	 * @param pseudo le pseudo du membre
+	 * @param pwd le password du membre
+	 * @param titre le titre du Book
+	 * @param note la note attribuée
+	 * @param commentaire le commentaire rédigé
+	 * @param idTest l'identifiant unique caractérisant le test courant
+	 * @param messErreur message à afficher en cas d'échec du test courant
+	 * @return 1 si erreur détectée, 0 sinon
+	 */
 	public static int addReviewNotItem (SocialNetwork sn, String pseudo, String pwd, String titre, float note, String commentaire, String idTest, String messErreur){
 		try {
 			sn.reviewItemBook (pseudo, pwd, titre, note, commentaire);
@@ -86,6 +112,18 @@ public class TestReviewItemBook {
 		}
 	}
 	
+	/**
+	 * Vérifie la levée de l'exception NotMember
+	 * @param sn Le Social Network
+	 * @param pseudo le pseudo du membre
+	 * @param pwd le password du membre
+	 * @param titre le titre du Book
+	 * @param note la note attribuée
+	 * @param commentaire le commentaire rédigé
+	 * @param idTest l'identifiant unique caractérisant le test courant
+	 * @param messErreur message à afficher en cas d'échec du test courant
+	 * @return 1 si erreur détectée, 0 sinon
+	 */
 	public static int addReviewNotMemberTest (SocialNetwork sn, String pseudo, String pwd, String titre, float note, String commentaire,  String idTest, String messErreur){
 		try {
 			sn.reviewItemBook (pseudo, pwd, titre, note, commentaire);
@@ -104,7 +142,10 @@ public class TestReviewItemBook {
 
 
 
-
+	/**
+	 * main de test de la fonction reviewItemBook()
+	 * @param args tableau permettant de remonter au test global le nombre de tests échoués et le nombre de tests tentés
+	 */
 	public static void main(String[] args) {
 
 		//================================= Déclarations =======================================
