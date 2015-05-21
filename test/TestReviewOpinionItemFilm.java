@@ -49,10 +49,20 @@ public class TestReviewOpinionItemFilm {
 			return 1;
 		}
 	}
-
+	
+	/**
+	 * Vérifie le bon fonctionnement de reviewOpinionItemFilm() avec des paramètres d'entrée corrects (pas d'exception non prévue) 
+	 * @param sn le SocialNetwork sur lequel on travaille
+	 * @param pseudo le pseudo du Member qui établit note la Review
+	 * @param pwd le mot de passe du Member qui note la Review
+	 * @param pseudo2 le pseudo du Member dont une Review est évaluée
+	 * @param titre le titre de l'Item sur lequel porte la Review évaluée
+	 * @param note la note attribuée à la Review
+	 * @param idTest l'identifiant unique du test pour référence
+	 * @return 1 si erreur détectée, 0 sinon
+	 */
 	public static int ReviewOpinionItemFilmOKTest (SocialNetwork sn, String pseudo, String pwd, String pseudo2, String titre, float note , String idTest){
-		
-		
+
 		try{
 			sn.reviewOpinionItemFilm (pseudo, pwd, pseudo2, titre, note); 
 			return 0;
@@ -64,6 +74,18 @@ public class TestReviewOpinionItemFilm {
 		}
 	}
 
+	/**
+	 * Vérifie la levée de l'exception NotItem lorsque celle-ci est attendue
+	 * @param sn le SocialNetwork sur lequel on travaille
+	 * @param pseudo le pseudo du Member qui établit note la Review
+	 * @param pwd le mot de passe du Member qui note la Review
+	 * @param pseudo2 le pseudo du Member dont une Review est évaluée
+	 * @param titre le titre de l'Item sur lequel porte la Review évaluée
+	 * @param note la note attribuée à la Review
+	 * @param idTest l'identifiant unique du test pour référence
+	 * @param messErreur message à afficher en cas d'échec du test
+	 * @return 1 si erreur détectée, 0 sinon
+	 */
 	public static int ReviewOpinionItemFilmNotItemTest (SocialNetwork sn, String pseudo, String pwd, String pseudo2, String titre, float note , String idTest, String messErreur){
 		try {
 			sn.reviewOpinionItemFilm (pseudo, pwd, pseudo2, titre, note);
@@ -81,6 +103,18 @@ public class TestReviewOpinionItemFilm {
 		}
 	}
 	
+	/**
+	 * Vérifie la levée de l'exception NotMember lorsque celle-ci est attendue
+	 * @param sn le SocialNetwork sur lequel on travaille
+	 * @param pseudo le pseudo du Member qui établit note la Review
+	 * @param pwd le mot de passe du Member qui note la Review
+	 * @param pseudo2 le pseudo du Member dont une Review est évaluée
+	 * @param titre le titre de l'Item sur lequel porte la Review évaluée
+	 * @param note la note attribuée à la Review
+	 * @param idTest l'identifiant unique du test pour référence
+	 * @param messErreur message à afficher en cas d'échec du test
+	 * @return 1 si erreur détectée, 0 sinon
+	 */
 	public static int ReviewOpinionItemFilmNotMemberTest (SocialNetwork sn, String pseudo, String pwd, String pseudo2, String titre, float note , String idTest, String messErreur){
 		try {
 			sn.reviewOpinionItemFilm (pseudo, pwd, pseudo2, titre, note);
@@ -99,7 +133,10 @@ public class TestReviewOpinionItemFilm {
 
 
 
-
+	/**
+	 * main de test de la fonction reviewOpinionItemFilm()
+	 * @param args tableau permettant de remonter au test global le nombre d'échecs de tests et le nombre de tests tentés
+	 */
 	public static void main(String[] args) {
 
 		//================================= Déclarations =======================================
