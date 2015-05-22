@@ -367,7 +367,7 @@ public class SocialNetwork {
 	 * @throws NotItem : si le titre du film sur lequel porte l'évaluation de Review ne désigne pas un film connu
 	 * @throws NotMember :  si l'un des deux pseudo ne désigne pas un membre existant
 	 */
-	public void reviewOpinionItemFilm(String pseudo, String password, String pseudoMembreDeposant, String titre, float note) throws BadEntry, NotItem, NotMember, Exception 
+	public void reviewOpinionItemFilm(String pseudo, String password, String pseudoMembreDeposant, String titre, float note) throws BadEntry, NotItem, NotMember 
 	{
 		reviewOpinion(pseudo, password, pseudoMembreDeposant, titre, note, ItemType.FILM);
 	}
@@ -393,7 +393,7 @@ public class SocialNetwork {
 	 * @throws NotItem : si le titre du Book sur lequel porte l'évaluation de Review ne désigne pas un Book connu
 	 * @throws NotMember :  si l'un des deux pseudo ne désigne pas un membre existant
 	 */
-	public void reviewOpinionItemBook(String pseudo, String password, String pseudoMembreDeposant, String titre, float note) throws BadEntry, NotItem, NotMember, Exception 
+	public void reviewOpinionItemBook(String pseudo, String password, String pseudoMembreDeposant, String titre, float note) throws BadEntry, NotItem, NotMember
 	{
 		reviewOpinion(pseudo, password, pseudoMembreDeposant, titre, note, ItemType.BOOK);
 	}
@@ -402,15 +402,6 @@ public class SocialNetwork {
 		
 	private void reviewOpinion(String pseudo, String password, String pseudoMembreDeposant, String titre, float note, ItemType itemType) throws BadEntry, NotItem, NotMember
 	{
-		//===================================== ANALYSE DES CAS D'ERREURS =======================================
-		//Si l'un des pseudos n'est pas instancié
-		if (pseudo == null || pseudoMembreDeposant == null)
-			throw new BadEntry("L'un des pseudos n'est pas instancié.");
-		// Si les deux pseudos sont égaux (il est interdit à un membre de noter ses propres avis)
-		if (pseudo.trim().toUpperCase().equals(pseudoMembreDeposant.trim().toUpperCase()))
-			throw new NotMember ("Vous n'êtes pas autorisé à noter vos propres avis.");
-	
-		//========================================== TRAITEMENTS ============================================
 		// Rechercher le membre évaluateur et vérifier l'authentification
 		Member memberEvaluateur = findMemberByPseudo(pseudo);
 		if (memberEvaluateur == null || !memberEvaluateur.authentificationMatches(pseudo, password))
@@ -420,6 +411,10 @@ public class SocialNetwork {
 		Member memberDeposant = findMemberByPseudo(pseudoMembreDeposant);
 		if (memberDeposant == null)
 			throw new NotMember("Aucun membre ne correspond au pseudo spécifié.");
+		
+		// Si les deux pseudos sont égaux on lève NotMember (il est interdit à un membre de noter ses propres avis)
+		if (memberDeposant.equals(memberEvaluateur))
+			throw new NotMember ("Vous n'êtes pas autorisé à noter vos propres avis.");
 		
 		// Rechercher l'item
 		Item item = findItemByName(titre, itemType);
