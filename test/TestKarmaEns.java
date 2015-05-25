@@ -2,6 +2,10 @@ package test;
 
 import avis.SocialNetwork;
 
+/**
+ * Reprise du scénario de test de l'enseignant sur le fonctionnement du karma via la méthode reviewOpinionItemFilm
+ * @author Yann Andreu et Yannick Omnès
+ */
 public class TestKarmaEns {
 	public static void main (String args[])
 	{
@@ -9,7 +13,7 @@ public class TestKarmaEns {
 		float moyenneAvantOpinion;
 		float moyenneApresOpinion;
 		try {
-			// Ajout de 3 membres, d'un film et de deux Reviews sur celui-ci
+			// Ajout de 3 membres, d'un film et de deux Review sur celui-ci
 			sn.addMember("Alice", "alice", "");
 			sn.addMember("Antoine", "antoine", "");
 			sn.addMember("Patrick", "patrick", "");
