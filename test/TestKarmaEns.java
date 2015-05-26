@@ -27,7 +27,7 @@ public class TestKarmaEns {
 			sn.reviewOpinionItemFilm("Alice", "alice", "Antoine", "film", 1);
 			sn.reviewOpinionItemFilm("Patrick", "patrick", "Antoine", "film", 1);
 			// On récupère la moyenne après modification du karma
-			moyenneApresOpinion = sn.reviewItemFilm("Alice", "alice", "film", 3, "commentaire");
+			moyenneApresOpinion = sn.reviewItemFilm("Alice", "alice", "film", 2, "commentaire");
 			
 			System.out.println("Moyenne avant modification du karma : "+ moyenneAvantOpinion);
 			System.out.println("Moyenne après modification du karma : " + moyenneApresOpinion);

@@ -147,7 +147,7 @@ public class TestReviewOpinionItemFilm {
 		int nbMembers = sn.nbMembers();
 		int nbBooks = sn.nbBooks();
 		
-		System.out.println("Tests d'ajout de reviews à des Films.");
+		System.out.println("Tests d'ajout d'opinions de Reviews à des Films.");
 
 		// Ajout d'un membre puis d'un Film avec paramètres corrects
 		try 
@@ -231,7 +231,7 @@ public class TestReviewOpinionItemFilm {
 		
 		//Exception NotMember : Un membre tente de s'évaluer lui même
 		nbTests++;
-		nbErreurs += ReviewOpinionItemFilmNotMemberTest(sn, "Membre 1", "password", "Membre 1", "L'art desdf la guerre",2.0f, "10.7", "Un membre a pu noter sa propre Review.");
+		nbErreurs += ReviewOpinionItemFilmNotMemberTest(sn, "Membre 1", "password", "Membre 1", "La grande vadrouille",2.0f, "10.7", "Un membre a pu noter sa propre Review.");
 
 		nbTests++;
 		if (nbBooks != sn.nbBooks()){
