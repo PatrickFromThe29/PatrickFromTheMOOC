@@ -182,23 +182,23 @@ public class TestReviewOpinionItemBook {
 		// Exception BadEntry : tentatives BadEntryment incorrectes d'ajout de notes de reviews de book
 		
 		nbTests++;;
-		nbErreurs += ReviewOpinionItemBookBadEntryTest(sn, null, "password", "Membre 2", "L'art de la guerre", 2.0f, "9.1", "L'ajout d'une note sur une review avec pseudo non instancié est accepté.");
+		nbErreurs += ReviewOpinionItemBookBadEntryTest(sn, null, "password", "Membre 2", "L'art de la guerre", 2.0f, "13.1", "L'ajout d'une note sur une review avec pseudo non instancié est accepté.");
 		nbTests++;;
-		nbErreurs += ReviewOpinionItemBookBadEntryTest(sn, "   ", "password", "Membre 2", "L'art de la guerre", 2.0f, "9.2", "L'ajout d'une note sur une review avec pseudo ne contenant que des espaces est accepté.");
+		nbErreurs += ReviewOpinionItemBookBadEntryTest(sn, "   ", "password", "Membre 2", "L'art de la guerre", 2.0f, "13.2", "L'ajout d'une note sur une review avec pseudo ne contenant que des espaces est accepté.");
 		nbTests++;;
-		nbErreurs += ReviewOpinionItemBookBadEntryTest(sn, "Membre 1", null, "Membre 2", "L'art de la guerre", 2.0f, "9.3", "L'ajout d'une note sur une review avec password non instancié est accepté.");
+		nbErreurs += ReviewOpinionItemBookBadEntryTest(sn, "Membre 1", null, "Membre 2", "L'art de la guerre", 2.0f, "13.3", "L'ajout d'une note sur une review avec password non instancié est accepté.");
 		nbTests++;;
-		nbErreurs += ReviewOpinionItemBookBadEntryTest(sn, "Membre 1", "    aze   ", "Membre 2", "L'art de la guerre", 2.0f, "9.4", "L'ajout d'une note sur une review avec password contenant moins de 4 caractères autre que des leadings/trailings blanks est accepté.");
+		nbErreurs += ReviewOpinionItemBookBadEntryTest(sn, "Membre 1", "    aze   ", "Membre 2", "L'art de la guerre", 2.0f, "13.4", "L'ajout d'une note sur une review avec password contenant moins de 4 caractères autre que des leadings/trailings blanks est accepté.");
 		nbTests++;;
-		nbErreurs += ReviewOpinionItemBookBadEntryTest(sn, "Membre 1", "password", null, "L'art de la guerre", 2.0f, "9.5", "L'ajout d'une note sur une review avec pseudo du membre ayant déposé l'avis non instancié est accepté.");
+		nbErreurs += ReviewOpinionItemBookBadEntryTest(sn, "Membre 1", "password", null, "L'art de la guerre", 2.0f, "13.5", "L'ajout d'une note sur une review avec pseudo du membre ayant déposé l'avis non instancié est accepté.");
 		nbTests++;;
-		nbErreurs += ReviewOpinionItemBookBadEntryTest(sn, "Membre 1", "password", "Membre 2", null, 2.0f, "9.6", "L'ajout d'une note sur une review avec titre non instancié est accepté.");
+		nbErreurs += ReviewOpinionItemBookBadEntryTest(sn, "Membre 1", "password", "Membre 2", null, 2.0f, "13.6", "L'ajout d'une note sur une review avec titre non instancié est accepté.");
 		nbTests++;;
-		nbErreurs += ReviewOpinionItemBookBadEntryTest(sn, "Membre 1", "password", "Membre 2", "               ", 2.0f, "9.7", "L'ajout d'une note sur une review avec titre ne contenant que des espaces est accepté.");
+		nbErreurs += ReviewOpinionItemBookBadEntryTest(sn, "Membre 1", "password", "Membre 2", "               ", 2.0f, "13.7", "L'ajout d'une note sur une review avec titre ne contenant que des espaces est accepté.");
 		nbTests++;;
-		nbErreurs += ReviewOpinionItemBookBadEntryTest(sn, "Membre 1", "password", "Membre 2", "L'art de la guerre", 6.0f, "9.8", "L'ajout d'une note supérieure à 5 sur une review est accepté.");
+		nbErreurs += ReviewOpinionItemBookBadEntryTest(sn, "Membre 1", "password", "Membre 2", "L'art de la guerre", 6.0f, "13.8", "L'ajout d'une note supérieure à 5 sur une review est accepté.");
 		nbTests++;;
-		nbErreurs += ReviewOpinionItemBookBadEntryTest(sn, "Membre 1", "password", "Membre 2", "L'art de la guerre", -2.0f, "9.9", "L'ajout d'une note négative sur une review est accepté.");
+		nbErreurs += ReviewOpinionItemBookBadEntryTest(sn, "Membre 1", "password", "Membre 2", "L'art de la guerre", -2.0f, "13.9", "L'ajout d'une note négative sur une review est accepté.");
 
 		
 		// <=> fiche numéro 6
@@ -206,33 +206,33 @@ public class TestReviewOpinionItemBook {
 		// Ajout de 3 reviews avec entrées "correctes". 
 		// On vérifie que l'on peut modifier un avis sur un Book ou en ajouter un.
 		nbTests++;
-		nbErreurs += ReviewOpinionItemBookOKTest (sn, "Membre 1", "password", "Membre 2", "L'art de la guerre",2.0f, "10.1a");
+		nbErreurs += ReviewOpinionItemBookOKTest (sn, "Membre 1", "password", "Membre 2", "L'art de la guerre",2.0f, "14.1a");
 		nbTests++;
-		nbErreurs += ReviewOpinionItemBookOKTest (sn, "Membre 2", "password", "Membre 1",  "L'art de la guerre", 3.0f, "10.1b");
+		nbErreurs += ReviewOpinionItemBookOKTest (sn, "Membre 2", "password", "Membre 1",  "L'art de la guerre", 3.0f, "14.1b");
 		nbTests++;
-		nbErreurs += ReviewOpinionItemBookOKTest (sn, "Membre 1", "password", "Membre 2", "L'art de la guerre",4.0f, "10.1a");
+		nbErreurs += ReviewOpinionItemBookOKTest (sn, "Membre 1", "password", "Membre 2", "L'art de la guerre",4.0f, "14.1a");
 
 		//Exception NotMember : comportement en cas d'erreur d'authentification
 		nbTests++;
-		nbErreurs += ReviewOpinionItemBookNotMemberTest(sn, "Membre", "password", "Membre 2", "L'art de la guerre",2.0f, "10.3a", "Membre inexistant accepté.");
+		nbErreurs += ReviewOpinionItemBookNotMemberTest(sn, "Membre", "password", "Membre 2", "L'art de la guerre",2.0f, "14.3a", "Membre inexistant accepté.");
 		nbTests++;
-		nbErreurs += ReviewOpinionItemBookNotMemberTest(sn, "Membre 1", "password", "Membre", "L'art de la guerre",2.0f, "10.3b", "Membre inexistant accepté.");
+		nbErreurs += ReviewOpinionItemBookNotMemberTest(sn, "Membre 1", "password", "Membre", "L'art de la guerre",2.0f, "14.3b", "Membre inexistant accepté.");
 		nbTests++;
-		nbErreurs += ReviewOpinionItemBookNotMemberTest(sn, "Membre 1", "passwsdfsdford", "Membre 2", "L'art de la guerre",2.0f, "10.4", "Mauvais password accepté.");
+		nbErreurs += ReviewOpinionItemBookNotMemberTest(sn, "Membre 1", "passwsdfsdford", "Membre 2", "L'art de la guerre",2.0f, "14.4", "Mauvais password accepté.");
 		
 		// Exception NotItem : l'avis n'existe pas
 		nbTests++;
-		nbErreurs += ReviewOpinionItemBookNotItemTest(sn, "Membre 1", "password", "Membre 3", "L'art de la guerre",2.0f, "10.5", "Ajout d'une opinion sur une review inexistante acceptée.");
+		nbErreurs += ReviewOpinionItemBookNotItemTest(sn, "Membre 1", "password", "Membre 3", "L'art de la guerre",2.0f, "14.5", "Ajout d'une opinion sur une review inexistante acceptée.");
 
 		
 		
 		// Exception NotItem : le Book n'existe pas
 		nbTests++;
-		nbErreurs += ReviewOpinionItemBookNotItemTest(sn, "Membre 1", "password", "Membre 2", "L'art desdf la guerre",2.0f, "10.6", "Ajout d'une opinion accepté avec un titre incorrect.");
+		nbErreurs += ReviewOpinionItemBookNotItemTest(sn, "Membre 1", "password", "Membre 2", "L'art desdf la guerre",2.0f, "14.6", "Ajout d'une opinion accepté avec un titre incorrect.");
 		
 		//Exception NotMember : Un membre tente de s'évaluer lui même
 		nbTests++;
-		nbErreurs += ReviewOpinionItemBookNotMemberTest(sn, "Membre 1", "password", "Membre 1", "L'art de la guerre",2.0f, "10.7", "Un membre a pu noter sa propre Review.");
+		nbErreurs += ReviewOpinionItemBookNotMemberTest(sn, "Membre 1", "password", "Membre 1", "L'art de la guerre",2.0f, "14.7", "Un membre a pu noter sa propre Review.");
 
 		nbTests++;
 		if (nbFilms != sn.nbFilms()){

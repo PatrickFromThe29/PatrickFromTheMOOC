@@ -202,23 +202,23 @@ public class TestAddItemBook {
 
 		// Exception BadEntry : tentative d'ajout de Books avec entrées "incorrectes"
 		nbTests++;
-		nbErreurs += addItemBookBadEntryTest ( sn, null, "password", "a","a","a",1, "3.1", "L'ajout d'un Book avec pseudo non instancié est accepté.");
+		nbErreurs += addItemBookBadEntryTest ( sn, null, "password", "a","a","a",1, "5.1", "L'ajout d'un Book avec pseudo non instancié est accepté.");
 		nbTests++;
-		nbErreurs += addItemBookBadEntryTest ( sn, "     ", "password", "a","a","a",1, "3.2", "L'ajout d'un Book avec un pseudo contenant uniquement des espaces est accepté.");
+		nbErreurs += addItemBookBadEntryTest ( sn, "     ", "password", "a","a","a",1, "5.2", "L'ajout d'un Book avec un pseudo contenant uniquement des espaces est accepté.");
 		nbTests++;
-		nbErreurs += addItemBookBadEntryTest ( sn, "Membre 1", null, "a", "a","a",1,"3.3", "L'ajout d'un Book avec password non instancié est accepté.");
+		nbErreurs += addItemBookBadEntryTest ( sn, "Membre 1", null, "a", "a","a",1,"5.3", "L'ajout d'un Book avec password non instancié est accepté.");
 		nbTests++;
-		nbErreurs += addItemBookBadEntryTest ( sn, "Membre 1", "   qwd ", "a", "a","a",1,"3.4", "L'ajout d'un Book avec un password ne contenant pas plus de 4 caractères autres que leading/trailing blanks est accepté.");
+		nbErreurs += addItemBookBadEntryTest ( sn, "Membre 1", "   qwd ", "a", "a","a",1,"5.4", "L'ajout d'un Book avec un password ne contenant pas plus de 4 caractères autres que leading/trailing blanks est accepté.");
 		nbTests++;
-		nbErreurs += addItemBookBadEntryTest ( sn, "Membre 1", "password", null,"a","a",1, "3.5", "L'ajout d'un Book avec un titre non instancié est accepté.");
+		nbErreurs += addItemBookBadEntryTest ( sn, "Membre 1", "password", null,"a","a",1, "5.5", "L'ajout d'un Book avec un titre non instancié est accepté.");
 		nbTests++;
-		nbErreurs += addItemBookBadEntryTest ( sn, "Membre 1", "password", "   ","a","a",1, "3.6", "L'ajout d'un Book avec titre ne contenant que des espaces est accepté.");
+		nbErreurs += addItemBookBadEntryTest ( sn, "Membre 1", "password", "   ","a","a",1, "5.6", "L'ajout d'un Book avec titre ne contenant que des espaces est accepté.");
 		nbTests++;
-		nbErreurs += addItemBookBadEntryTest ( sn, "Membre 1", "password", "b",null,"a",1, "3.7", "L'ajout d'un Book avec un genre non instancié est accepté.");
+		nbErreurs += addItemBookBadEntryTest ( sn, "Membre 1", "password", "b",null,"a",1, "5.7", "L'ajout d'un Book avec un genre non instancié est accepté.");
 		nbTests++;
-		nbErreurs += addItemBookBadEntryTest ( sn, "Membre 1", "password", "b","a",null,1, "3.8", "L'ajout d'un Book avec un auteur non instancié est accepté.");
+		nbErreurs += addItemBookBadEntryTest ( sn, "Membre 1", "password", "b","a",null,1, "5.8", "L'ajout d'un Book avec un auteur non instancié est accepté.");
 		nbTests++;
-		nbErreurs += addItemBookBadEntryTest ( sn, "Membre 1", "password", "b","a","a",-5, "3.10", "L'ajout d'un Book avec un nombre de pages négatif est accepté.");
+		nbErreurs += addItemBookBadEntryTest ( sn, "Membre 1", "password", "b","a","a",-5, "5.9", "L'ajout d'un Book avec un nombre de pages négatif est accepté.");
 
 		
 		nbTests++;
@@ -234,13 +234,13 @@ public class TestAddItemBook {
 		// Ajout de 3 Books avec entrées "correctes"
 		nbTests++;
 		nbBooks++;
-		nbErreurs += addBookOKTest (sn, "Membre 1", "password", "L'art de la guerre", "Traité de Stratégie militaire", "Sun Tzu", 338, "4.1a");
+		nbErreurs += addBookOKTest (sn, "Membre 1", "password", "L'art de la guerre", "Traité de Stratégie militaire", "Sun Tzu", 338, "6.1a");
 		nbTests++;
 		nbBooks++;
-		nbErreurs += addBookOKTest (sn, "Membre 1", "password", "Les traites négrières","Essai philosophique", "Olivier Pétré-grenouilleau", 480, "4.1b");
+		nbErreurs += addBookOKTest (sn, "Membre 1", "password", "Les traites négrières","Essai philosophique", "Olivier Pétré-grenouilleau", 480, "6.1b");
 		nbTests++;
 		nbBooks++;
-		nbErreurs += addBookOKTest (sn, "Membre 1", "password", "Essai sur les données imédiates de la conscience", "Texte Philosophique", "Henri Bergson", 120, "4.1c");
+		nbErreurs += addBookOKTest (sn, "Membre 1", "password", "Essai sur les données imédiates de la conscience", "Texte Philosophique", "Henri Bergson", 120, "6.1c");
 		
 		
 		nbTests++;
@@ -252,9 +252,9 @@ public class TestAddItemBook {
 
 		// Exception NotMember : Tentative d'ajout de Books avec erreur d'authentification
 		nbTests++;
-		nbErreurs += addBookNotMemberTest(sn, "M", "password", "L'art de la guerreds","Traité de Stratégie militaire","Sun Tzu",338, "4.2", "Membre inexistant accepté.");
+		nbErreurs += addBookNotMemberTest(sn, "M", "password", "L'art de la guerreds","Traité de Stratégie militaire","Sun Tzu",338, "6.2", "Membre inexistant accepté.");
 		nbTests++;
-		nbErreurs += addBookNotMemberTest(sn, "Membre 1", " sdmmf ", "L'art de ma guerresdf","Traité de Stratégie militaire","Sun Tzu",338, "4.3", "Mauvais password accepté.");
+		nbErreurs += addBookNotMemberTest(sn, "Membre 1", " sdmmf ", "L'art de ma guerresdf","Traité de Stratégie militaire","Sun Tzu",338, "6.3", "Mauvais password accepté.");
 		
 		nbTests++;
 		if(nbBooks != sn.nbBooks())
@@ -266,13 +266,13 @@ public class TestAddItemBook {
 		
 		// Exception ItemBookAlreadyExists : tentative d'ajout de Book déjà  existant
 		nbTests++;
-		nbErreurs += addBookAlreadyExistsTest(sn, "Membre 1", "password", "L'art de la guerre","Traité de Stratégie militaire","Sun Tzu",130, "4.4a", "Ajout d'un Book identique au premier ajouté accepté.");
+		nbErreurs += addBookAlreadyExistsTest(sn, "Membre 1", "password", "L'art de la guerre","Traité de Stratégie militaire","Sun Tzu",130, "6.4a", "Ajout d'un Book identique au premier ajouté accepté.");
 		nbTests++;
-		nbErreurs += addBookAlreadyExistsTest(sn, "Membre 1", "password", "Les traites négrières","Essai philosophique", "Olivier Pétré-grenouilleau", 480,  "4.4b", "L'ajout d'un Book identique au dernier Book ajouté est accepté.");
+		nbErreurs += addBookAlreadyExistsTest(sn, "Membre 1", "password", "Les traites négrières","Essai philosophique", "Olivier Pétré-grenouilleau", 480,  "6.4b", "L'ajout d'un Book identique au dernier Book ajouté est accepté.");
 		nbTests++;
-		nbErreurs += addBookAlreadyExistsTest(sn, "Membre 1", "password", "Essai sur les données imédiates de la conscience", "Texte Philosophique", "Henri Bergson", 120,  "4.5", "L'ajout d'un Book déjà  existant (avec casse différente) est accepté.");
+		nbErreurs += addBookAlreadyExistsTest(sn, "Membre 1", "password", "Essai sur les données imédiates de la conscience", "Texte Philosophique", "Henri Bergson", 120,  "6.5", "L'ajout d'un Book déjà  existant (avec casse différente) est accepté.");
 		nbTests++;
-		nbErreurs += addBookAlreadyExistsTest(sn, "Membre 1", "password", "           Essai sur les données imédiates de la conscience            ", "Texte philosophique", "Henry Bergson", 120,  "4.6", "L'ajout d'un Book déjà  existant (avec leading et trailing blanks) est accepté.");		
+		nbErreurs += addBookAlreadyExistsTest(sn, "Membre 1", "password", "           Essai sur les données imédiates de la conscience            ", "Texte philosophique", "Henry Bergson", 120,  "6.6", "L'ajout d'un Book déjà  existant (avec leading et trailing blanks) est accepté.");		
 		
 		nbTests++;
 		if(nbBooks != sn.nbBooks())

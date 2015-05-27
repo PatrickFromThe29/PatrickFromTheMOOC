@@ -188,23 +188,23 @@ public class TestReviewItemBook {
 		
 		// Exception BadEntry : tentatives BadEntryment incorrectes d'ajout de reviews
 		nbTests++;
-		nbErreurs += ReviewItemBookBadEntryTest ( sn, null, "password", "L'art de la guerre",0.f,"a", "5.1", "L'ajout d'une review avec pseudo non instancié est accepté.");
+		nbErreurs += ReviewItemBookBadEntryTest ( sn, null, "password", "L'art de la guerre",0.f,"a", "9.1", "L'ajout d'une review avec pseudo non instancié est accepté.");
 		nbTests++;
-		nbErreurs += ReviewItemBookBadEntryTest ( sn, "   ", "qsdfgh", "L'art de la guerre",0.f,"a", "5.2", "L'ajout d'une review avec un pseudo contenant uniquement des espaces est accepté.");
+		nbErreurs += ReviewItemBookBadEntryTest ( sn, "   ", "qsdfgh", "L'art de la guerre",0.f,"a", "9.2", "L'ajout d'une review avec un pseudo contenant uniquement des espaces est accepté.");
 		nbTests++;
-		nbErreurs += ReviewItemBookBadEntryTest ( sn, "Membre 1", null, "L'art de la guerre",0.f,"a","5.3", "L'ajout d'une review avec un password non instancié est accepté.");
+		nbErreurs += ReviewItemBookBadEntryTest ( sn, "Membre 1", null, "L'art de la guerre",0.f,"a","9.3", "L'ajout d'une review avec un password non instancié est accepté.");
 		nbTests++;
-		nbErreurs += ReviewItemBookBadEntryTest ( sn, "Membre 1", "      fgh  ", "L'art de la guerre",0.f,"a","5.4", "L'ajout d'une review avec un password ne contenant pas plus de 4 caractères autres que leading/trailing blanks est accepté.");
+		nbErreurs += ReviewItemBookBadEntryTest ( sn, "Membre 1", "      fgh  ", "L'art de la guerre",0.f,"a","9.4", "L'ajout d'une review avec un password ne contenant pas plus de 4 caractères autres que leading/trailing blanks est accepté.");
 		nbTests++;
-		nbErreurs += ReviewItemBookBadEntryTest ( sn, "Membre 1", "password", null,0.f,"a", "5.5", "L'ajout d'une review avec un titre non instancié est accepté.");
+		nbErreurs += ReviewItemBookBadEntryTest ( sn, "Membre 1", "password", null,0.f,"a", "9.5", "L'ajout d'une review avec un titre non instancié est accepté.");
 		nbTests++;
-		nbErreurs += ReviewItemBookBadEntryTest ( sn, "Membre 1", "password", "         ",0.f,"a", "5.6", "L'ajout d'une review avec un titre ne contenant que des espaces est accepté.");
+		nbErreurs += ReviewItemBookBadEntryTest ( sn, "Membre 1", "password", "         ",0.f,"a", "9.6", "L'ajout d'une review avec un titre ne contenant que des espaces est accepté.");
 		nbTests++;
-		nbErreurs += ReviewItemBookBadEntryTest ( sn, "Membre 1", "password", "L'art de la guerre",-1.f,"a", "5.7", "L'ajout d'une review avec une note inferieure à 0 est accepté.");
+		nbErreurs += ReviewItemBookBadEntryTest ( sn, "Membre 1", "password", "L'art de la guerre",-1.f,"a", "9.7", "L'ajout d'une review avec une note inferieure à 0 est accepté.");
 		nbTests++;
-		nbErreurs += ReviewItemBookBadEntryTest ( sn, "Membre 1", "password", "L'art de la guerre",6.f,"a", "5.8", "L'ajout d'une review avec une note supérieure à 5 est accepté.");
+		nbErreurs += ReviewItemBookBadEntryTest ( sn, "Membre 1", "password", "L'art de la guerre",6.f,"a", "9.8", "L'ajout d'une review avec une note supérieure à 5 est accepté.");
 		nbTests++;
-		nbErreurs += ReviewItemBookBadEntryTest ( sn, "Membre 1", "password", "L'art de la guerre",0.f,null, "5.9", "L'ajout d'une review avec un commentaire non instancié est accepté.");
+		nbErreurs += ReviewItemBookBadEntryTest ( sn, "Membre 1", "password", "L'art de la guerre",0.f,null, "9.9", "L'ajout d'une review avec un commentaire non instancié est accepté.");
 
 		
 		// <=> fiche numéro 6
@@ -212,9 +212,9 @@ public class TestReviewItemBook {
 		// Ajout de 3 reviews avec entrées "correctes". Le test prend en compte la moyenne retournée par reviewItemBook.
 		// On vérifie que l'on peut modifier un avis sur un Book ou en ajouter un.
 		nbTests++;
-		nbErreurs += addReviewOKTest (sn, "Membre 1", "password", "L'art de la guerre",2.0f, "review 1", "6.1a", 2.0f);
+		nbErreurs += addReviewOKTest (sn, "Membre 1", "password", "L'art de la guerre",2.0f, "review 1", "10.1a", 2.0f);
 		nbTests++;
-		nbErreurs += addReviewOKTest (sn, "Membre 1", "password", "Les traites négrières",2.0f, "review 1", "6.1b", 2.0f);
+		nbErreurs += addReviewOKTest (sn, "Membre 1", "password", "Les traites négrières",2.0f, "review 1", "10.1b", 2.0f);
 		try{
 		sn.reviewOpinionItemBook("Membre 2", "password", "Membre 1", "L'art de la guerre", 5f);
 
@@ -227,19 +227,19 @@ public class TestReviewItemBook {
 		
 		// On vérifie que la moyenne renvoyée par addReviewItemBook correspond à celle qu'on attend, en prenant en compte le Karma (correspond au calcul scabreux passé en dernier paramètre)
 		nbTests++;
-		nbErreurs += addReviewOKTest (sn, "Membre 2", "password", "L'art de la guerre",3.0f, "review 1", "6.1c",(3.75f * 2.0f + 3.0f * 2.5f)/(3.75f + 2.5f) );
+		nbErreurs += addReviewOKTest (sn, "Membre 2", "password", "L'art de la guerre",3.0f, "review 1", "10.1c",(3.75f * 2.0f + 3.0f * 2.5f)/(3.75f + 2.5f) );
 		nbTests++;
-		nbErreurs += addReviewOKTest (sn, "Membre 1", "password","L'art de la guerre",4.0f, "review 1", "6.2", (3.75f * 4.0f + 3.0f * 2.5f)/(3.75f + 2.5f));
+		nbErreurs += addReviewOKTest (sn, "Membre 1", "password","L'art de la guerre",4.0f, "review 1", "10.2", (3.75f * 4.0f + 3.0f * 2.5f)/(3.75f + 2.5f));
 
 		//Exception NotMember : comportement en cas d'erreur d'authentification
 		nbTests++;
-		nbErreurs += addReviewNotMemberTest(sn, "Memb", "password", "L'art de la guerre",2.0f, "review 1", "6.3", "Membre inexistant accepté.");
+		nbErreurs += addReviewNotMemberTest(sn, "Memb", "password", "L'art de la guerre",2.0f, "review 1", "10.3", "Membre inexistant accepté.");
 		nbTests++;
-		nbErreurs += addReviewNotMemberTest(sn, "Membre 1", " ghsdf ", "L'art de la guerre",2.0f, "review 1", "6.4", "Mauvais password accepté.");
+		nbErreurs += addReviewNotMemberTest(sn, "Membre 1", " ghsdf ", "L'art de la guerre",2.0f, "review 1", "10.4", "Mauvais password accepté.");
 		
 		// Exception NotItem : le Book n'existe pas
 		nbTests++;
-		nbErreurs += addReviewNotItem(sn, "Membre 1", "password", "L'art de la guerdsfsdfre",2.5f, "", "6.5", "Ajout d'une review accepté avec un titre incorrect.");
+		nbErreurs += addReviewNotItem(sn, "Membre 1", "password", "L'art de la guerdsfsdfre",2.5f, "", "10.5", "Ajout d'une review accepté avec un titre incorrect.");
 
 		nbTests++;
 		if (nbFilms != sn.nbFilms()){
