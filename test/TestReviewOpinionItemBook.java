@@ -19,17 +19,15 @@ public class TestReviewOpinionItemBook {
 
 
 	/**
-	 * Vérifie que l'ajout d'une review est refusé (levée de l'exception BadEntry) 
-	 * Si c'est bien le cas, ne fait rien
-	 * Sinon, affiche le message d'erreur passé en paramètre
-	 * @param sn Le Social Network
-	 * @param pseudo le pseudo du membre
-	 * @param pwd le password du membre
-	 * @param titre le titre du Book
-	 * @param note la note attribuée
-	 * @param commentaire le commentaire rédigé
+	 * Vérifie que l'exception BadEntry est bien levée en cas de tentative d'ajout d'une ReviewOpinion sur une Review avec des paramètres incorrects 
+	 * @param sn le SocialNetwork sur lequel on travaille
+	 * @param pseudo le pseudo du Member qui établit note la Review
+	 * @param pwd le mot de passe du Member qui note la Review
+	 * @param pseudo2 le pseudo du Member dont une Review est évaluée
+	 * @param titre le titre de l'Item sur lequel porte la Review évaluée
+	 * @param note la note attribuée à la Review
 	 * @param idTest l'idTest affecté
-	 * @param messErreur le message d'erreur associé
+	 * @param messErreur le message d'erreur associé, affiché en cas d'échec du test
 	 * @return 1 si erreur détectée, 0 sinon
 	 */
 	public static int ReviewOpinionItemBookBadEntryTest (SocialNetwork sn, String pseudo, String pwd, String pseudo2, String titre, float note , String idTest, String messErreur){
@@ -150,7 +148,7 @@ public class TestReviewOpinionItemBook {
 		int nbMembers = sn.nbMembers();
 		int nbFilms = sn.nbFilms();
 		
-		System.out.println("Tests d'ajout de reviews à des Books.");
+		System.out.println("Tests d'ajout d'opinions de Reviews à des Books.");
 
 		// Ajout d'un membre puis d'un Book avec paramètres corrects
 		try 
@@ -234,7 +232,7 @@ public class TestReviewOpinionItemBook {
 		
 		//Exception NotMember : Un membre tente de s'évaluer lui même
 		nbTests++;
-		nbErreurs += ReviewOpinionItemBookNotMemberTest(sn, "Membre 1", "password", "Membre 1", "L'art desdf la guerre",2.0f, "10.7", "Un membre a pu noter sa propre Review.");
+		nbErreurs += ReviewOpinionItemBookNotMemberTest(sn, "Membre 1", "password", "Membre 1", "L'art de la guerre",2.0f, "10.7", "Un membre a pu noter sa propre Review.");
 
 		nbTests++;
 		if (nbFilms != sn.nbFilms()){
