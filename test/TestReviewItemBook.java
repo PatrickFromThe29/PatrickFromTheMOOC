@@ -223,7 +223,6 @@ public class TestReviewItemBook {
 		{
 			System.out.println("Ajout de la note de review : échec"+E);
 		}
-		/* TODO : Ajout d'un autre book, d'une autre review par membre 1, pas de note sur cette review */
 		
 		// On vérifie que la moyenne renvoyée par addReviewItemBook correspond à celle qu'on attend, en prenant en compte le Karma (correspond au calcul scabreux passé en dernier paramètre)
 		nbTests++;
