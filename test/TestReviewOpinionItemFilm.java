@@ -213,25 +213,25 @@ public class TestReviewOpinionItemFilm {
 
 		//Exception NotMember : comportement en cas d'erreur d'authentification
 		nbTests++;
-		nbErreurs += ReviewOpinionItemFilmNotMemberTest(sn, "Membre", "password", "Membre 2", "La grande vadrouille",2.0f, "12.2a", "Membre inexistant accepté.");
+		nbErreurs += ReviewOpinionItemFilmNotMemberTest(sn, "Membre", "password", "Membre 2", "La grande vadrouille",2.0f, "12.3a", "Membre inexistant accepté.");
 		nbTests++;
-		nbErreurs += ReviewOpinionItemFilmNotMemberTest(sn, "Membre 1", "password", "Membre", "La grande vadrouille",2.0f, "12.2b", "Membre inexistant accepté.");
+		nbErreurs += ReviewOpinionItemFilmNotMemberTest(sn, "Membre 1", "password", "Membre", "La grande vadrouille",2.0f, "12.3b", "Membre inexistant accepté.");
 		nbTests++;
-		nbErreurs += ReviewOpinionItemFilmNotMemberTest(sn, "Membre 1", "passwsdfsdford", "Membre 2", "La grande vadrouille",2.0f, "12.3", "Mauvais password accepté.");
+		nbErreurs += ReviewOpinionItemFilmNotMemberTest(sn, "Membre 1", "passwsdfsdford", "Membre 2", "La grande vadrouille",2.0f, "12.4", "Mauvais password accepté.");
 		
 		// Exception NotItem : l'avis n'existe pas
 		nbTests++;
-		nbErreurs += ReviewOpinionItemFilmNotItemTest(sn, "Membre 1", "password", "Membre 3", "La grande vadrouille",2.0f, "12.4", "Ajout d'une opinion sur une review inexistante acceptée.");
+		nbErreurs += ReviewOpinionItemFilmNotItemTest(sn, "Membre 1", "password", "Membre 3", "La grande vadrouille",2.0f, "12.5", "Ajout d'une opinion sur une review inexistante acceptée.");
 
 		
 		
 		// Exception NotItem : le Film n'existe pas
 		nbTests++;
-		nbErreurs += ReviewOpinionItemFilmNotItemTest(sn, "Membre 1", "password", "Membre 2", "L'art desdf la guerre",2.0f, "12.5", "Ajout d'une opinion accepté avec un titre incorrect.");
+		nbErreurs += ReviewOpinionItemFilmNotItemTest(sn, "Membre 1", "password", "Membre 2", "L'art desdf la guerre",2.0f, "12.6", "Ajout d'une opinion accepté avec un titre incorrect.");
 		
 		//Exception NotMember : Un membre tente de s'évaluer lui même
 		nbTests++;
-		nbErreurs += ReviewOpinionItemFilmNotMemberTest(sn, "Membre 1", "password", "Membre 1", "La grande vadrouille",2.0f, "12.6", "Un membre a pu noter sa propre Review.");
+		nbErreurs += ReviewOpinionItemFilmNotMemberTest(sn, "Membre 1", "password", "Membre 1", "La grande vadrouille",2.0f, "12.7", "Un membre a pu noter sa propre Review.");
 
 		nbTests++;
 		if (nbBooks != sn.nbBooks()){

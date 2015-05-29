@@ -214,25 +214,25 @@ public class TestReviewOpinionItemBook {
 
 		//Exception NotMember : comportement en cas d'erreur d'authentification
 		nbTests++;
-		nbErreurs += ReviewOpinionItemBookNotMemberTest(sn, "Membre", "password", "Membre 2", "L'art de la guerre",2.0f, "14.2a", "Membre inexistant accepté.");
+		nbErreurs += ReviewOpinionItemBookNotMemberTest(sn, "Membre", "password", "Membre 2", "L'art de la guerre",2.0f, "14.3a", "Membre inexistant accepté.");
 		nbTests++;
-		nbErreurs += ReviewOpinionItemBookNotMemberTest(sn, "Membre 1", "password", "Membre", "L'art de la guerre",2.0f, "14.2b", "Membre inexistant accepté.");
+		nbErreurs += ReviewOpinionItemBookNotMemberTest(sn, "Membre 1", "password", "Membre", "L'art de la guerre",2.0f, "14.3b", "Membre inexistant accepté.");
 		nbTests++;
-		nbErreurs += ReviewOpinionItemBookNotMemberTest(sn, "Membre 1", "passwsdfsdford", "Membre 2", "L'art de la guerre",2.0f, "14.3", "Mauvais password accepté.");
+		nbErreurs += ReviewOpinionItemBookNotMemberTest(sn, "Membre 1", "passwsdfsdford", "Membre 2", "L'art de la guerre",2.0f, "14.4", "Mauvais password accepté.");
 		
 		// Exception NotItem : l'avis n'existe pas
 		nbTests++;
-		nbErreurs += ReviewOpinionItemBookNotItemTest(sn, "Membre 1", "password", "Membre 3", "L'art de la guerre",2.0f, "14.4", "Ajout d'une opinion sur une review inexistante acceptée.");
+		nbErreurs += ReviewOpinionItemBookNotItemTest(sn, "Membre 1", "password", "Membre 3", "L'art de la guerre",2.0f, "14.5", "Ajout d'une opinion sur une review inexistante acceptée.");
 
 		
 		
 		// Exception NotItem : le Book n'existe pas
 		nbTests++;
-		nbErreurs += ReviewOpinionItemBookNotItemTest(sn, "Membre 1", "password", "Membre 2", "L'art desdf la guerre",2.0f, "14.5", "Ajout d'une opinion accepté avec un titre incorrect.");
+		nbErreurs += ReviewOpinionItemBookNotItemTest(sn, "Membre 1", "password", "Membre 2", "L'art desdf la guerre",2.0f, "14.6", "Ajout d'une opinion accepté avec un titre incorrect.");
 		
 		//Exception NotMember : Un membre tente de s'évaluer lui même
 		nbTests++;
-		nbErreurs += ReviewOpinionItemBookNotMemberTest(sn, "Membre 1", "password", "Membre 1", "L'art de la guerre",2.0f, "14.6", "Un membre a pu noter sa propre Review.");
+		nbErreurs += ReviewOpinionItemBookNotMemberTest(sn, "Membre 1", "password", "Membre 1", "L'art de la guerre",2.0f, "14.7", "Un membre a pu noter sa propre Review.");
 
 		nbTests++;
 		if (nbFilms != sn.nbFilms()){
